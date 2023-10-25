@@ -15,7 +15,7 @@
 							Whether you're a Fortune 500 company or a small business, our team is ready to work with you to develop a customized sponsorship program that fits your brand and business culture.  
 						</p>
 						<p style="text-align:center;">
-							<a href="#" class="button" >Contact Us Today To Get Started!</a>
+							<a href="<?= SITE_URL ?>products/contact" class="button" >Contact Us Today To Get Started!</a>
 						</p>
         	</div>
         </div>

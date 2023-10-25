@@ -15,7 +15,7 @@
                 What is Booktopia?						
             </p>
 						<p style="text-align:center;">
-							<a href="#" class="button" >Contact Us Today To Get Started!</a>
+							<a href="<?= SITE_URL ?>products/contact" class="button" >Contact Us Today To Get Started!</a>
 						</p>
         	</div>
         </div>
