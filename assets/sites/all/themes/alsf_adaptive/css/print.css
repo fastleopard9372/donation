@@ -1,0 +1,380 @@
+body {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 140%;
+  font-family: Roboto, Tahoma, Arial, Helvetica, sans-serif;
+  color: #000;
+  background: 0 0;
+  font-size: 11pt;
+}
+#header-wrapper,
+#main-content-header,
+h1#page-title {
+  break-after: avoid;
+  page-break-after: avoid;
+}
+#main-content,
+#content {
+  break-before: avoid;
+  page-break-before: avoid;
+}
+#page-wrapper {
+  display: block;
+  position: static;
+}
+a {
+  background: 0 0;
+  font-weight: 700;
+  text-decoration: underline;
+  color: #00e;
+}
+a[href^="http://"]:after,a[href^="http://"]:visited:after
+{
+  content: "(" attr(href) ")";
+  font-size: 10pt;
+}
+.heroPhotoGallery,
+div[id*="wrapper"],
+[class*="title"],
+[class*="inner"],
+header,
+footer,
+#branding,
+#container,
+#columns,
+.columns-inner,
+#content-column,
+.content-inner,
+.region,
+.region-header,
+.region-content,
+.article,
+.article-title,
+.article-content,
+.comment,
+.comment-title,
+.comment-content,
+.block,
+.block-inner,
+.block-title,
+.block-content,
+table,
+table * {
+  background: 0 0 !important;
+}
+.heroLearnMore,
+.galleryInfo,
+.photoThumb,
+.node-type-hero .view-donate,
+.relatedHeroes,
+.alsf-mini-menu,
+.hero-btnGroup,
+.heroesFull .btn.yellow,
+#header .mobile-show#alsf-logo,
+#tophat-wrapper,
+#leaderboard-wrapper,
+.block-social,
+.block-slogan,
+#nav-wrapper,
+#block-search-form,
+#secondary-content-wrapper,
+#book-toc-sidebar,
+.noprint,
+.sidebar,
+#breadcrumb,
+.block-alsf-core-breadcrumbs,
+.nav,
+.field-type-taxonomy-term-reference,
+ul.links,
+.feed-icon,
+.poll .bar,
+.poll .foreground,
+.comment-form,
+#comment-form,
+.book-navigation,
+.tabs,
+.action-links,
+.pager,
+.messages,
+.help,
+footer #newsletter,
+.pane-book-chapters,
+.book-chapters-header a,
+.footer-copyright,
+.mobile-show,
+.pdf-link,
+.book-landing .pane-book-nav {
+  display: none;
+}
+.book-landing .pane-book-chapters {
+  display: block;
+}
+.book-chapters {
+  border-bottom: none;
+}
+#header #alsf-logo {
+  display: block;
+  float: none;
+  margin: 0 auto;
+  text-align: center;
+}
+#header #alsf-logo img {
+  height: auto;
+  margin: 0;
+  text-align: center;
+}
+.book-chapters ul,
+.how-use-book .block-content {
+  column-count: 1;
+}
+#content {
+  display: block !important;
+}
+#header {
+  margin-bottom: 20px;
+}
+.content-inner {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #000;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+h1 {
+  font-size: 17pt;
+  margin: 0 0 20px;
+}
+h2 {
+  font-size: 14pt;
+}
+h3 {
+  font-size: 13pt;
+}
+h4,
+h5,
+h6 {
+  font-size: 11pt;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a,
+#site-name a,
+#site-slogan {
+  text-decoration: none !important;
+  color: #333;
+}
+.h-group a:link,
+.h-group a:visited {
+  text-decoration: none;
+}
+#page-title {
+  margin-top: 20px;
+}
+pre,
+code,
+tt,
+samp,
+kbd,
+var {
+  font-size: 10pt;
+  font-family: Consolas, lucida console, Menlo, Monaco, dejavu sans mono, monospace, sans-serif;
+}
+blockquote {
+  margin: 20px;
+  padding: 10px;
+  font-size: 10pt;
+  font-style: italic;
+  background: #eee;
+}
+hr {
+  background-color: #666;
+}
+#header {
+  padding-bottom: 20px;
+}
+#alsf-logo img {
+  padding: 0;
+  margin: 0 auto !important;
+  float: none !important;
+}
+img {
+  float: left;
+  margin: 4px 20px 10px 0;
+  page-break-inside: avoid;
+}
+a img {
+  border: none;
+}
+table {
+  margin: 1px;
+  text-align: left;
+}
+th {
+  border-bottom: 1px solid #333;
+  font-weight: 700;
+}
+td {
+  border-bottom: 1px solid #333;
+}
+th,
+td {
+  padding: 4px 10px 4px 0;
+}
+tfoot {
+  font-style: italic;
+}
+caption {
+  margin-bottom: 10px;
+  text-align: left;
+}
+thead {
+  display: table-header-group;
+}
+tr {
+  page-break-inside: avoid;
+}
+form {
+  margin-bottom: 10px;
+}
+.poll .text,
+.poll .percent,
+.poll .total {
+  text-align: left;
+}
+.poll form {
+  margin-bottom: 0;
+}
+.node,
+.comment {
+  margin-bottom: 20px;
+  overflow: visible;
+}
+.submitted {
+  color: #666;
+  text-decoration: none;
+  font-size: 9pt;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+.submitted a {
+  color: #666;
+  text-decoration: none;
+  font-size: 9pt;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+#footer p {
+  font-size: 9pt;
+  text-align: center;
+}
+#footer-wrapper .footer-address p {
+  margin: 0;
+  padding: 0;
+}
+#footer-wrapper .footer-address p:nth-child(1) {
+  margin: 0;
+  font-weight: 700;
+}
+#cancer-guides .all-guides,
+#cancer-guides .purchase {
+  display: none;
+}
+#cancer-guides .region-two-33-66-bottom {
+  margin-bottom: 40px;
+}
+#cancer-guides .mobile-show .field-type-image {
+  display: table;
+  margin: 0 auto 25px;
+  text-align: center;
+}
+#cancer-guides .mobile-show img {
+  height: auto;
+  max-width: 250px;
+}
+#main-content .how-use-book h2.block-title,
+.pane-book-title h4 {
+  font-family: Roboto, Tahoma, Arial, Helvetica, sans-serif;
+}
+.book-chapters li a,
+.pane-book-title h4 a {
+  border-bottom: none;
+  color: #444;
+  text-decoration: none;
+}
+h1.sec1,
+h1.sec1 strong,
+h1.sec1 em,
+h1.sec2,
+.pane-book-title h1 {
+  color: #000;
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+h1.sec1 {
+  margin: 20px 0 15px;
+}
+.book-chapters li,
+.pane-book-chapters h3,
+.story-wrapper p em {
+  font-family: Georgia, serif;
+}
+.epigraph-wrapper {
+  background: #eee;
+  border-color: #666;
+}
+#cancer-guides .region-two-33-66-bottom {
+  border-color: #666;
+}
+#cancer-guides .field-name-body .epigraph-wrapper p:first-child em,
+#cancer-guides .field-name-body .epigraph-wrapper p {
+  font-family: Georgia, serif;
+}
+.pane-book-nav {
+  border-top: 1px solid #000;
+  margin-bottom: 40px;
+}
+.book-landing h3,
+a.page-next,
+a.page-previous {
+  color: #444;
+}
+#cancer-guides p.image,
+#cancer-guides p img {
+  float: none;
+  text-align: center;
+}
+#cancer-guides p.image-caption {
+  margin-top: 0;
+  padding-top: 0;
+}
+.heroesFull #columns {
+  break-before: avoid;
+  page-break-before: avoid;
+  padding: 0;
+}
+.mainPhoto {
+  text-align: center;
+}
+.heroPhotoGallery {
+  float: none;
+  margin: 0 auto 25px;
+  padding: 0;
+}
+.heroPhotoGallery img {
+  float: none;
+  margin: 0 auto;
+}

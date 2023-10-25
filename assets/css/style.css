@@ -1,0 +1,43 @@
+h4{
+	font-family: 'quicksandbold';
+	font-size:17px;
+	color:#313131;
+	padding-bottom:8px;
+}
+p{color: #646464;}
+p span{
+	font:15px Arial,Helvetica,sans-serif;
+	color:#E8026D;
+	font-weight: bold;
+}
+.success{color:#0EAD03;}
+.error{color:#D70000;}
+
+.container{
+	padding: 20px;
+}
+.caption{
+    height: 130px;
+    overflow: hidden;
+}
+.caption h4{
+    white-space: nowrap;
+}
+.thumbnail img{
+    width: 100%;
+}
+.thumbnail{
+    padding: 0;
+}
+.thumbnail .caption-full{
+    padding: 9px;
+    color: #333;
+}
+.ratings{
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+.ratings a img{
+	max-width: 70px;
+}
