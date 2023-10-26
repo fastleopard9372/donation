@@ -503,7 +503,7 @@
                   <div class="block-inner clearfix">
                     <div class="block-content content">
                       <div class="leaderboard-link donate">
-                        <p><a class="donate" href="#donate_select">Donate</a></p>
+                        <p><a class="donate" href="<?= SITE_URL ?>products/index#donate_select">Donate</a></p>
                       </div>
                     </div>
                   </div>

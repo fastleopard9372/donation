@@ -621,7 +621,7 @@ body {
     right: -40px;
   }
   #secondary-content-wrapper {
-    margin-top: 110px;
+    margin-top: -50px !important;
   }
   #secondary-content-wrapper h1,
   #secondary-content-wrapper h2 {
@@ -1371,6 +1371,7 @@ body {
     margin: 0 10px 10px;
     width: 80%;
   }
+
   .dashboard-thermometer a {
     font-size: 15px;
     margin: 0 0 15px;
@@ -1459,6 +1460,10 @@ body {
 @media only screen and (max-width: 640px) {
   #header #alsf-logo {
     width: 110px;
+  }
+  .leaderboard-link ul li ul {
+    display: block !important;
+    top: 0.8em !important;
   }
   .pane-block .view-our-partners.view-display-id-block_10m .views-row {
     width: 35%;
