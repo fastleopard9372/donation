@@ -178,7 +178,7 @@
                                       <table class="sticky-enabled">
                                         <thead>
                                           <tr>
-                                            <th>NAME</th>
+                                            <th class="thead-part">NAME</th>
                                             <th>Location</th>
                                             <th>Amount</th>
                                           </tr>
@@ -192,8 +192,8 @@
                                         ?>
                                         <tr class="<?= $flag ?>">
                                           <td>
-                                            <div class="leader-rank" style="margin-right:20px;"><?= $i++?></div>
-                                            <div class="leader-name" style="padding:15px;">
+                                            <div class="leader-rank" style="margin-right:10px;"><?= $i++?></div>
+                                            <div class="leader-name" style="padding:15px 5px 15px 5px;">
                                             <a href="#"><?= $str[0] . ' ' . ($str[1] == '' ? '' : substr($str[1], 0, 1)); ?></a>
                                             </div>
                                             

@@ -13,9 +13,9 @@
                                     <div style="padding:10px 20px 50px 20px; ">
                                       
                                       <div class="star-container">
-                                          <img class=" star star-rotate1" src= "<?= ASSETS_URL ?>/images/bronze star.png"/>
-                                          <h3 class='star-letter'>&nbsp;&nbsp;&nbsp;BRONZE STAR SPONSORS&nbsp;&nbsp;&nbsp;</h3>
-                                          <img class=" star star-rotate2" src= "<?= ASSETS_URL ?>/images/bronze star.png"/>
+                                          <img class=" star star-rotate1" src= "<?= ASSETS_URL ?>/images/gold star.png"/>
+                                          <h3 class='star-letter'>&nbsp;&nbsp;&nbsp;GOLD STAR SPONSORS&nbsp;&nbsp;&nbsp;</h3>
+                                          <img class=" star star-rotate2" src= "<?= ASSETS_URL ?>/images/gold star.png"/>
                                       </div>                                    
                                       <div
                                         class="views-row views-row-1 views-row-odd views-row-first"
@@ -337,71 +337,50 @@
   </div>
 </div>
 <div id="footer-wrapper">
-          <div class="container clearfix">
-            <footer id="footer" class="clearfix" role="contentinfo">
-              
-              <div class="footer-address">
-                <div id="newsletter">
-                  <h3>BOOKTOPIA NEWSLETTER</h3>
-                  <p>Learn more about Booktopia and how you can get involved.</p>
-
-                  <!--[if lte IE 8]>
-                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
-                  <![endif]-->
-                  <!-- <script charset="utf-8" type="text/javascript" src="<?= ASSETS_URL ?>misc/v2.js"></script>
-                  <script>
-                    hbspt.forms.create({
-                      portalId: "5187852",
-                      formId: "32805288-2eb0-4fca-8eb9-6576613fe83a",
-                    });
-                  </script> -->
-                </div>
+  <div class="container clearfix">
+    <footer id="footer" class="clearfix" role="contentinfo">
+      <div class="region region-footer">
+        <div class="region-inner clearfix">
+          <div id="block-block-405" class="block block-block no-title odd first last block-count-18 block-region-footer block-405">
+            <div class="block-inner clearfix">
+              <div class="block-content content">
+                <!-- <script
+                  type="text/javascript"
+                  src="https://a.optmnstr.com/app/js/api.min.js"
+                  data-account="59221"
+                  data-user="52641"
+                  async
+                ></script> -->
               </div>
-              <div class="footer-copyright">
-                <div class="region region-footer">
-                  <div class="region-inner clearfix">
-                    <div id="block-block-405" class="block block-block no-title odd first last block-count-18 block-region-footer block-405">
-                      <div class="block-inner clearfix">
-                        <div class="block-content content">
-                          <!-- <script
-                            type="text/javascript"
-                            src="https://a.optmnstr.com/app/js/api.min.js"
-                            data-account="59221"
-                            data-user="52641"
-                            async
-                          ></script> -->
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="footer-signout" class="signOut clearfix">
-                  <p id="user-footer" class="fl"></p>
-                </div>
-                <p id="contact">
-                  <a href="<?= SITE_URL ?>products/contact">Contact Us</a>
-                </p>
-               
-              </div>
-              <div id="footer-bottom">
-                <p>
-                  <a href="#">Home</a> • <a href="/donor-privacy-policy">Privacy Policy</a> • <a href="/privacy-policy">Terms of Use •<a href="/privacy-policy"> Contact Us</a>
-                </p>
-                <p>
-                  
-                © 2023 Booktopia <br />
-                  <!-- &ldquo;Booktopia&rdquo; is a registered service mark of Booktopia book group. -->
-                </p>
-              </div>
-            </footer>
+            </div>
           </div>
         </div>
       </div>
-      <div id="messages-help-wrapper">
-        <div class="container clearfix">
-          <div id="messages"></div>
-        </div>
+      <div id="footer-signout" class="signOut clearfix">
+        <p id="user-footer" class="fl"></p>
       </div>
+      <p id="contact" style="display:flex;justify-content:center;width:100%;">
+        <a href="<?= SITE_URL ?>products/contact">Contact Us</a>
+      </p>
+      <div id="footer-bottom">
+        <p>
+          <a href="#">Home</a> • <a href="/donor-privacy-policy">Privacy Policy</a> • <a href="/privacy-policy">Terms of Use •<a href="/privacy-policy"> Contact Us</a>
+        </p>
+        <p>
+          
+        © 2023 Booktopia <br />
+          <!-- &ldquo;Booktopia&rdquo; is a registered service mark of Booktopia book group. -->
+        </p>
+      </div>
+    </footer>
+  </div>
+</div>
+</div>
+<div id="messages-help-wrapper">
+  <div class="container clearfix">
+    <div id="messages"></div>
+  </div>
+</div>
       
       <div id="myModal" class="modal">
         <!-- Modal content -->

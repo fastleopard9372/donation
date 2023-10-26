@@ -719,7 +719,8 @@ body {
     margin-top: 0;
   }
   .leaderboard-link ul li ul {
-    display: none !important;
+    display: block !important;
+    top: 1.8em !important;
   }
   #columns {
     padding: 0 20px 76px;

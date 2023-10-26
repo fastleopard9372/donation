@@ -521,7 +521,7 @@
                         id="menu-20295-4"
                         class="first odd sf-item-1 sf-depth-1 sf-total-children-7 sf-parent-children-0 sf-single-children-7 menuparent"
                       >
-                        <a href="#" class="sf-depth-1 menuparent">Get Involved</a>
+                        <a href="javascript:;" class="sf-depth-1 menuparent">Get Involved</a>
                         <ul>
                           <li id="menu-20297-4" class="first odd sf-item-1 sf-depth-2 sf-no-children">
                             <a href="<?= SITE_URL ?>products/schools" class="sf-depth-2">For Schools</a>
@@ -535,8 +535,8 @@
                         id="menu-24066-4"
                         class="last even sf-item-2 sf-depth-1 sf-total-children-8 sf-parent-children-0 sf-single-children-8 menuparent"
                       >
-                        <a href="#" class="sf-depth-1 menuparent"> ABOUT US</a>
-                        <ul>
+                        <a href="javascript:;" class="sf-depth-1 menuparent"> ABOUT US</a>
+                        <ul id="menu-about-us">
                           <li id="menu-20297-4" class="first odd sf-item-1 sf-depth-2 sf-no-children">
                             <a href="<?= SITE_URL ?>products/faq" class="sf-depth-2">FAQ</a>
                           </li>

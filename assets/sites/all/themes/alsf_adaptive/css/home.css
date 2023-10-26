@@ -18,6 +18,9 @@ body.front {
     padding: 5px 0px;
     text-transform: uppercase;
   }
+  .front .panel-row.row-5 {
+    padding: 5px !important;
+  }
 
   .front table tbody tr td:nth-child(2),
   .front table tbody tr td:nth-child(3) {
@@ -25,6 +28,15 @@ body.front {
     font-size: 15px !important;
     font-weight: 700;
     padding: 0 0 0 5px !important;
+  }
+  .leader-rank {
+    font-size: 15px !important;
+  }
+  .leader-name > a {
+    font-size: 15px !important;
+  }
+  .thead-part {
+    min-width: 100px;
   }
 
   .star-letter {
