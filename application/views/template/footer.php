@@ -1,11 +1,11 @@
-                    <div class="panel-row row-8">
+                    <div class="panel-row row-8 sponsor">
                         <div class="container">
                           <div class="field field-name-our-top-sponsors" style="padding-left:0px;padding-right:0px;">
                             <section
                               id="block-views-sponsor-slideshow-block-1"
                               class="block block-views odd block-count-5 block-region--1 block-sponsor-slideshow-block-1"
-                            >
-                            <h2 style="color:#002595; font-family:'ITCKRIST';">Thank you to our sponsors</h2>
+                            >                                           
+                            <p style="color:#002595; font-size:30px; font-family:'ITCKRIST';">Thank you to our sponsors</p>
                               <!-- Slideshow container -->
                               <div class="slideshow-container block-inner clearfix">
 
@@ -364,7 +364,7 @@
       </p>
       <div id="footer-bottom">
         <p>
-          <a href="#">Home</a> • <a href="/donor-privacy-policy">Privacy Policy</a> • <a href="/privacy-policy">Terms of Use •<a href="/privacy-policy"> Contact Us</a>
+          <a href="<?= SITE_URL ?>products">Home</a> • <a href="<?= SITE_URL ?>products/privacy_policy">Privacy Policy</a> • <a href="<?= SITE_URL ?>products/terms_of_use">Terms of Use •<a href="<?= SITE_URL ?>products/contact"> Contact Us</a>
         </p>
         <p>
           
@@ -541,7 +541,12 @@
         $("#leaderboard-wrapper").toggleClass("tiny", $(document).scrollTop() > 60);
         $("#header").toggleClass("shrink", $(document).scrollTop() > 60);
       });
-
+      var page = "<?= $statue ?>";
+      if(page == "schools" || page == "businesses"){
+        $(".sponsor").addClass('sponsor-hide');
+      }else{
+        $(".sponsor").removeClass('sponsor-hide');
+      }
       let slideIndex = 1;
       showSlides(slideIndex);
 

@@ -48,14 +48,26 @@ class Products extends CI_Controller
 
 	function schools()
 	{
-		$data['statue'] = 'home';
+		$data['statue'] = 'schools';
 		$this->load_view($data, 'schools');
 	}
 
 	function businesses()
 	{
-		$data['statue'] = 'home';
+		$data['statue'] = 'businesses';
 		$this->load_view($data, 'businesses');
+	}
+
+	function privacy_policy()
+	{
+		$data['statue'] = 'terms_of_use';
+		$this->load_view($data, 'privacy_policy');
+	}
+
+	function terms_of_use()
+	{
+		$data['statue'] = 'terms_of_use';
+		$this->load_view($data, 'terms_of_use');
 	}
 
 	function donation()

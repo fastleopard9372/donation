@@ -34,6 +34,7 @@ body.front {
   }
   .leader-name > a {
     font-size: 15px !important;
+    text-align: center;
   }
   .thead-part {
     min-width: 100px;
@@ -47,6 +48,23 @@ body.front {
     width: 25px !important;
     height: 25px !important;
   }
+}
+.sub-part {
+  display: flex;
+  justify-content: center;
+  font-size: 17px;
+}
+.sub-part div {
+  color: #222 !important;
+  font-size: 17px !important;
+  font-weight: normal;
+  padding: 5px;
+}
+.sponsor-hide {
+  display: none !important;
+}
+.donate_btn {
+  border: white solid 4px !important;
 }
 .star-letter {
   text-align: center;
@@ -897,10 +915,10 @@ body.front {
   padding: 10px 0 0;
 }
 .front td .leader-name a {
-  color: #002595;
+  color: #2b2d32;
   font-size: 21px;
   font-weight: 700;
-  padding: 8px 0 0;
+  padding: 9px 0 0;
 }
 .front td .leader-campaign a {
   color: #002595;
@@ -912,6 +930,9 @@ body.front {
   .front .panel-row.row-2 {
     background-size: 100% 100%;
   }
+}
+th {
+  text-align: center !important;
 }
 @media only screen and (min-width: 1500px) {
   .front .region-alsf-row-5-left {
@@ -1172,9 +1193,6 @@ body.front {
   .front .region-alsf-row-5-right h2,
   .front .panel-row h2 {
     font-size: 25px !important;
-  }
-  .front table tbody tr td:nth-child(2) {
-    font-size: 17px;
   }
 }
 @media only screen and (max-width: 1023px) {

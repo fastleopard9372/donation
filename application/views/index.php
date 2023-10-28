@@ -198,8 +198,8 @@
                                             </div>
                                             
                                           </td>
-                                          <td><?= $row['location'] ?></td>
-                                          <td>$<?= $row['amount'] ?></td>
+                                          <td style="text-align:center;"><?= $row['location'] ?></td>
+                                          <td  style="text-align:center;">$<?= $row['amount'] ?></td>
                                           </tr>
                                           <?php
                                             if ($flag == 'odd')
@@ -223,15 +223,15 @@
                                   id="block-alsf-pfp-alsf-pfp-stands-near-me"
                                   class="block block-alsf-pfp odd first block-count-7 block-region-content block-alsf-pfp-stands-near-me"
                                 >
-                                  <h2 class="block-title" style="text-align:center;margin:top:16px;">Choose Your Gift </h2>
+                                  <h2 class="block-title" style="text-align:center;margin:top:16px;">Choose Your Donation </h2>
                                   <div style="display:flex;justify-content: space-around;margin-top:0px;">
-                                  <div style="padding:15px;border:white solid 5px;">
+                                  <div >
                                     <div class="grid-container" >
                                     <?php
                                       $array = array(0, 5, 10, 25, 50, 125, 500);
                                       for ($i = 1; $i <= 6; $i++) {
                                         ?>  
-                                        <img  style="border:red solid 0px"
+                                        <img
                                             id = "donate_btn<?= $i; ?>"
                                             amount = "<?= $array[$i] ?>"
                                             class="donate_btn"

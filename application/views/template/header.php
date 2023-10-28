@@ -6,8 +6,8 @@
 <!--[if gt IE 8]><!--><html lang="en" dir="ltr"><!--<![endif]-->
   <head>
     <meta charset="utf-8" />
-    <link href="<?= ASSETS_URL ?>sites/default/files/logo_tr1.png" rel="apple-touch-icon" />
-    <link href="<?= ASSETS_URL ?>sites/default/files/logo_tr1.png" rel="shortcut icon" />
+    <link href="<?= ASSETS_URL ?>sites/default/files/favicon.png" rel="apple-touch-icon" />
+    <link href="<?= ASSETS_URL ?>sites/default/files/favicon.png" rel="shortcut icon" />
     <script>
 
     </script>
@@ -40,9 +40,9 @@
     <meta name="twitter:image" content="<?= ASSETS_URL ?>sites/default/files/downloads/logos/twitter_card.png" />
     <title>Booktopia</title>
     <meta name="theme-color" content="#ffffff" />
-    <link rel="icon" href="<?= ASSETS_URL ?>sites/default/files/logo_tr1.png" />
-    <link rel="mask-icon" href="<?= ASSETS_URL ?>sites/default/files/logo_tr1.png" />
-    <link rel="apple-touch-icon" href="<?= ASSETS_URL ?>sites/default/files/logo_tr1.png" />
+    <link rel="icon" href="<?= ASSETS_URL ?>sites/default/files/favicon.png" />
+    <link rel="mask-icon" href="<?= ASSETS_URL ?>sites/default/files/favicon.png" />
+    <link rel="apple-touch-icon" href="<?= ASSETS_URL ?>sites/default/files/favicon.png" />
     <link rel="manifest" href="<?= ASSETS_URL ?>sites/all/themes/alsf_adaptive/favicon/manifest.json" />
 
     <style>
