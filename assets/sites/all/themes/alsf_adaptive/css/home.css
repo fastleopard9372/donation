@@ -27,10 +27,11 @@ body.front {
     color: #2b2d32;
     font-size: 15px !important;
     font-weight: 700;
-    padding: 0 0 0 5px !important;
+    padding: 0px !important;
   }
   .leader-rank {
     font-size: 15px !important;
+    margin-right: 0px !important;
   }
   .leader-name > a {
     font-size: 15px !important;
@@ -895,8 +896,9 @@ body.front {
   font-family: source sans pro, sans-serif;
   font-size: 34px;
   font-weight: 900;
-  padding: 15px 15px 15px 10px;
+  padding: 18px 15px 11px 10px;
   width: 20px;
+  margin-right: 10px;
 }
 .front ul,
 .front table {

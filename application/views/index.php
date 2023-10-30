@@ -242,7 +242,8 @@
                                                                                     <tr>
                                                                                         <th class="thead-part">NAME</th>
                                                                                         <th>Location</th>
-                                                                                        <th>Amount</th>
+                                                                                        <th style="padding-right:2px;">
+                                                                                            Amount</th>
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
@@ -327,11 +328,10 @@
                                                                                     ?>
                                                                                     <tr class="<?= $flag ?>">
                                                                                         <td>
-                                                                                            <div class="leader-rank"
-                                                                                                style="margin-right:10px;">
+                                                                                            <div class="leader-rank">
                                                                                                 <?= $i++?></div>
                                                                                             <div class="leader-name"
-                                                                                                style="padding:15px 5px 15px 5px;">
+                                                                                                style="padding:18px 0px 0px 0px;">
                                                                                                 <a
                                                                                                     href="#"><?= $str[0] . ' ' . ($str[1] == '' ? '' : substr($str[1], 0, 1)) . '.'; ?></a>
                                                                                             </div>
