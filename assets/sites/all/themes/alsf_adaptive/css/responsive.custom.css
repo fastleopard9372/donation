@@ -609,7 +609,7 @@ body {
     z-index: 1001;
   }
   #header #alsf-logo img {
-    width: 120px;
+    width: 90px;
   }
   #header div.block-social {
     margin: 15px 0 0 150px;
@@ -621,11 +621,11 @@ body {
     right: -40px;
   }
   #secondary-content-wrapper {
-    margin-top: -50px !important;
+    margin-top: -20px !important;
   }
   #secondary-content-wrapper h1,
   #secondary-content-wrapper h2 {
-    margin-left: 160px;
+    margin-left: 10px;
   }
   #tophat-wrapper {
     background: 0 0;
@@ -847,7 +847,7 @@ body {
     text-align: center;
   }
   :target:before {
-    height: 166px !important;
+    /* height: 166px !important; */
     margin: -116px 0 0 !important;
   }
   h1#page-title {
@@ -1610,7 +1610,7 @@ body {
   }
   #header.shrink #alsf-logo,
   #header #alsf-logo {
-    width: 85px;
+    width: 120px;
   }
   #nav-wrapper {
     height: auto;
@@ -1839,7 +1839,7 @@ body {
   }
   #header.shrink #alsf-logo,
   #header #alsf-logo {
-    width: 74px;
+    width: 120px;
   }
   .full-width #campaign-banner-block h2,
   .page-node-1121949 #campaign-banner-block h2 {

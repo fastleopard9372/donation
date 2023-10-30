@@ -1,6 +1,6 @@
 <div id="secondary-content-wrapper">
     <div class="container clearfix">
-        <h1 style="padding-top:0px;">Frequently Asked Questions (FAQ)</h1>
+        <h1 style="padding-top:0px;">FAQ</h1>
     </div>
 </div>
 <div id="content-wrapper">
@@ -11,7 +11,7 @@
                     <div class="content-inner">
                         <section id="main-content">
                             <header id="main-content-header" class="clearfix">
-                                <h1 id="page-title">Frequently Asked Questions (FAQ)</h1>
+                                <h1 id="page-title">FAQ</h1>
                             </header>
                             <div id="content">
                                 <div id="block-system-main"

@@ -95,7 +95,7 @@ body.front {
   padding: 0;
 }
 .front #content-column {
-  padding: 37px 0 0;
+  padding: 30px 0 0;
 }
 .front .node {
   margin: 0;
@@ -994,7 +994,7 @@ th {
     padding-top: 15%;
   }
   .region-alsf-row-5-left .region-inner {
-    padding-bottom: 40px;
+    padding-bottom: 0px;
   }
   .front .region-alsf-row-5-right input {
     margin-top: 0;
@@ -1649,7 +1649,7 @@ th {
   }
   .front .panel-row .region {
     width: 100% !important;
-    margin: 0 0 10px;
+    margin: 0 0 50px;
   }
   .front #content .panel-display .panel-row.row-1 {
     position: relative;
@@ -1837,7 +1837,7 @@ th {
     font-size: 16px;
     padding: 0 0 0 65px;
     text-indent: 0;
-    text-align: justify;
+    text-align: left;
   }
   .front .region-alsf-row-1-right #helping-stats p.more-link {
     margin: 10px 0;
@@ -1969,15 +1969,13 @@ th {
 }
 
 .form-container {
-  display: grid;
-  /* justify-content: space-around; */
-  grid-template-columns: auto auto; /*Make the grid smaller than the container*/
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
 }
 .form-text {
   padding-top: 10px;
   font-size: 20px;
-  text-align: right;
+  text-align: left;
 }
 .grid-container {
   display: grid;
