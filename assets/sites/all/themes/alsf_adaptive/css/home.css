@@ -53,6 +53,7 @@ body.front {
 .sub-part {
   display: flex;
   justify-content: center;
+  flex-direction: row;
   font-size: 17px;
 }
 .sub-part div {
@@ -1523,6 +1524,12 @@ th {
   }
   .view-home-hero .views-field-field-home-page-image {
     margin-top: 0px;
+  }
+  .sub-part {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 17px;
   }
 }
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1024px) and (min-device-height: 1366px) and (max-device-height: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {

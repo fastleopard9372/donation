@@ -432,7 +432,9 @@ $(window).on("scroll touchmove", function() {
     $("#header").toggleClass("shrink", $(document).scrollTop() > 60);
 });
 var page = "<?= $statue ?>";
-if (page == "schools" || page == "businesses" || page == "faq") {
+console.log(page);
+if (page == "schools" || page == "businesses" || page == "faq" || page == "contact" || page == "privacy_policy" ||
+    page == "terms_of_use") {
     $(".sponsor").addClass('sponsor-hide');
 } else {
     $(".sponsor").removeClass('sponsor-hide');

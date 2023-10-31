@@ -36,13 +36,13 @@ class Products extends CI_Controller
 
 	function faq()
 	{
-		$data['statue'] = 'home';
+		$data['statue'] = 'faq';
 		$this->load_view($data, 'faq');
 	}
 
 	function contact()
 	{
-		$data['statue'] = 'home';
+		$data['statue'] = 'contact';
 		$this->load_view($data, 'contact');
 	}
 
@@ -60,7 +60,7 @@ class Products extends CI_Controller
 
 	function privacy_policy()
 	{
-		$data['statue'] = 'terms_of_use';
+		$data['statue'] = 'privacy_policy';
 		$this->load_view($data, 'privacy_policy');
 	}
 
