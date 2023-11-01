@@ -229,7 +229,9 @@ async
                 </p>
                 <p>
 
-                    © 2023 Booktopia <br />
+                    Booktopia is a registered 501(c)(3) non-profit organization<br><br>
+
+                    © 2023 Booktopia<br />
                     <!-- &ldquo;Booktopia&rdquo; is a registered service mark of Booktopia book group. -->
                 </p>
             </div>
