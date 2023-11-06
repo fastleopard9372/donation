@@ -10,7 +10,7 @@ class Welcome extends CI_Controller
 	 * 		http://example.com/index.php/welcome
 	 * 	- or -
 	 * 		http://example.com/index.php/welcome/index
-	 * 	- or welcome -
+	 * 	- or -
 	 * Since this controller is set as the default controller in
 	 * config/routes.php, it's displayed at http://example.com/
 	 *
