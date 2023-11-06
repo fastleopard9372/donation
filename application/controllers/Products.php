@@ -135,7 +135,7 @@ class Products extends CI_Controller
 		$this->paypal_lib->add_field('username', $_POST['username']);
 		$this->paypal_lib->add_field('location', $_POST['location']);
 		/*$_SESSION['username'] = $_POST['username'];
-		$_SESSION['location'] = $_POST['location'];*/
+		$_SESSION['location'] = $_POST['location']; */
 		file_put_contents('./us.ts', $_POST['username']);
 		file_put_contents('./ls.ts', $_POST['location']);
 		$this->paypal_lib->add_field('item_number', $_POST['item_number']);
