@@ -49,7 +49,7 @@ class Paypal extends CI_Controller
 	function cancel()
 	{
 		// Load payment failed view
-		// $this->load->view('paypal/cancel');
+		// $this->load->view('paypal/cancel' );
 		$dt['donate'] = $this->product->getDonate();
 		$dt['count'] = $this->product->getCount();
 		$dt['total'] = $this->product->getTotal();
