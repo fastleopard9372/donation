@@ -252,15 +252,13 @@ async
               <div class="form-line">
                 <div class="views-field form-text">First Name</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="text" name="username" id="first_name" placeholder="first_name"
-                    class="form-text form-input" />
+                  <input type="text" name="username" id="first_name" placeholder="John" class="form-text form-input" />
                 </div>
               </div>
               <div class="form-line">
                 <div class="views-field form-text">Last Name</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="text" name="last_name" id="last_name" placeholder="last_name"
-                    class="form-text form-input" />
+                  <input type="text" name="last_name" id="last_name" placeholder="Smith" class="form-text form-input" />
                 </div>
               </div>
               <div class="form-line">
@@ -285,11 +283,9 @@ async
                 </div>
               </div>
               <div class="form-line">
-                <div class="views-field form-text">fee</div>
-                <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="checkbox" class="form-text form-input" />
-                  <input type="number" name="amount" id="amount" placeholder="amount(USD)"
-                    class="form-text form-input" />
+                <div class="views-field form-text">
+                  <input type="checkbox" name="fee" id="fee" class="form-text form-input"
+                    style="width:20px !important; margin-bottom:20px;">Please pay fee</input>
                 </div>
               </div>
             </div>
@@ -381,19 +377,28 @@ $("#more-show").on('click', function() {
 });
 
 $(".donate_btn").on('click', function() {
-  console.log($(this).attr('amount'))
-  $(".pre-donate-input").val($(this).attr('amount'));
+  if ($('#amount').val() === 0) {
+    alert("Please select box!");
+    $('#amount').focus();
+    return;
+  }
+  $("#pre-donate-input").val($(this).attr('amount'));
 })
-$(".pre-donate").on('click', function() {
+$("#pre-donate").on('click', function() {
   modal.style.display = "block";
-  $('#amount').val($(".pre-donate-input").val());
+  $('#amount').val($("#pre-donate-input").val());
   $('#first_name').val("");
   $('#last_name').val("");
   $('#business').val("");
   $('#location').val("");
   $('#first_name').focus();
 });
-
+var fee_checked = 0;
+$("#fee").on('click', function() {
+  fee_checked = 1 - fee_checked;
+  var val = $("#pre-donate-input").val();
+  $("#amount").val(val * 1 + (val * 0.029 + 0.003) * fee_checked);
+})
 $("#donate_submit").on('click', function() {
   if ($('#first_name').val() === "") {
     alert("Input First name!");
