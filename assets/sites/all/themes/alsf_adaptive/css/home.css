@@ -814,16 +814,31 @@ body.front {
 .front .region-alsf-row-5-right form .form-item-q label {
   display: none;
 }
+.full-width {
+  display: flex;
+  flex-grow: 1;
+}
+.full-width button {
+  margin-right: 0;
+  width: 100%;
+  background-color: rgb(230, 98, 10);
+  box-shadow: none;
+}
+.full-width button:hover {
+  background-color: rgb(240, 122, 43);
+}
+
 .front .region-alsf-row-5-right input {
   color: #2c2c2c;
-  padding: 15px 10px;
+  padding: 8px;
   border: none;
   border-radius: 0;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
-  font-size: 20px;
+  font-size: 14px;
   margin-top: 4px;
   outline: none;
+  min-width: 100%;
   width: 100%;
 }
 .front .region-alsf-row-5-right form input.form-submit {

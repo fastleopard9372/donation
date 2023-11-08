@@ -27,9 +27,9 @@ defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
  * |
  */
 
-define('BASE_URL', 'http://localhost/booktopia/');
-define('SITE_URL', 'http://localhost/booktopia/index.php/');
-define('ASSETS_URL', 'http://localhost/booktopia/assets/');
+define('BASE_URL', 'http://localhost/');
+define('SITE_URL', 'http://localhost/index.php/');
+define('ASSETS_URL', 'http://localhost/assets/');
 defined('FILE_READ_MODE') OR define('FILE_READ_MODE', 0644);
 defined('FILE_WRITE_MODE') OR define('FILE_WRITE_MODE', 0666);
 defined('DIR_READ_MODE') OR define('DIR_READ_MODE', 0755);
