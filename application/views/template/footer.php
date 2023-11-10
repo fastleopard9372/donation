@@ -248,24 +248,77 @@ async
         <form class="google-cse donation-form" action="<?= base_url('/index.php/products/donate') ?>" target="_top"
           method="post" id="paypal-form" accept-charset="UTF-8">
           <div>
-            <div class="form-container">
+            <!-- TODO: section1 -->
+            <div class="modal-section1 form-container">
+              <div class="form-line modal-img">
+                <img src="<?= ASSETS_URL ?>sites/default/files/favicon.png" alt="logo" width="100px" />
+              </div>
+              <div class='modal-section-title'>Give the gift of reading</div>
+              <div class="form-line">
+                <div class="views-field form-text item-title">Donation Amount</div>
+                <div class="views-field form-text item-content" id="amount">50$</div>
+              </div>
+              <div class="form-line">
+                <div class="views-field form-text item-title" style="flex-grow:1;">Cover Fees</div>
+                <div class="views-field form-text item-content" id="fee-amount">0$</div>
+              </div>
+              <div class="form-line-inner">
+                <div class="views-field form-text item-title">
+                  <input type="checkbox" class="view-field form-text " id="item-fee"></input>
+                </div>
+                <div class="views-field form-text item-content " id="fee-content">Please add ###$ to cover processing
+                  fees
+                  associated with my donation.</div>
+              </div>
+              <div class="form-line total">
+                <div class="views-field form-text item-title">Total Donation Amount</div>
+                <div class="views-field form-text item-content" id="total-amount">3.5$</div>
+              </div>
+              <div class='modal-section-title' id="gift-checked">Make this donation a holiday
+                gift for
+                a loved one</div>
+              <div class="gift-part form-container">
+                <div class="form-line">
+                  <div class="views-field form-text">Name</div>
+                  <div class="form-item my-text form-type-textfield form-item-search-block-form">
+                    <input type="text" name="gift_name" id="gift_name" placeholder="" class="form-text form-input" />
+                  </div>
+                </div>
+
+                <div class="form-line">
+                  <div class="views-field form-text">Email</div>
+                  <div class="form-item my-text form-type-textfield form-item-search-block-form">
+                    <input type="email" name="gift_email" id="gift_email" placeholder="" class="form-text form-input" />
+                  </div>
+                </div>
+                <div class="form-line">
+                  <div class="views-field form-text">Message</div>
+                  <div class="form-item my-text  form-type-textfield form-item-search-block-form">
+                    <Textarea name="gift_message" id="gift_message" placeholder=""
+                      class="form-text form-input"></Textarea>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <!-- TODO: section2 -->
+            <div class="modal-section2 form-container">
               <div class="form-line">
                 <div class="views-field form-text">First Name</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="text" name="username" id="first_name" placeholder="John" class="form-text form-input" />
+                  <input type="text" name="username" id="first_name" placeholder="" class="form-text form-input" />
                 </div>
               </div>
               <div class="form-line">
                 <div class="views-field form-text">Last Name</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="text" name="last_name" id="last_name" placeholder="Smith" class="form-text form-input" />
+                  <input type="text" name="last_name" id="last_name" placeholder="" class="form-text form-input" />
                 </div>
               </div>
               <div class="form-line">
                 <div class="views-field form-text">Email</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="email" name="business" id="business" placeholder="business"
-                    class="form-text form-input" />
+                  <input type="email" name="business" id="business" placeholder="" class="form-text form-input" />
                 </div>
               </div>
               <div class="form-line">
@@ -277,17 +330,12 @@ async
               </div>
               <div class="form-line">
                 <div class="views-field form-text">Amount</div>
-                <div class="form-item my-text form-type-textfield form-item-search-block-form">
+                <!-- <div class="form-item my-text form-type-textfield form-item-search-block-form">
                   <input type="number" name="amount" id="amount" placeholder="amount(USD)"
                     class="form-text form-input" />
-                </div>
+                </div> -->
               </div>
-              <div class="form-line">
-                <div class="views-field form-text">
-                  <input type="checkbox" name="fee" id="fee" class="form-text form-input"
-                    style="width:20px !important; margin-bottom:20px;">Please pay fee</input>
-                </div>
-              </div>
+
             </div>
             <input type='hidden' name='item_name' value='Donation'>
             <input type='hidden' name='item_number' value='donation#N1'>
@@ -366,9 +414,48 @@ window.onclick = function(event) {
 <script src="<?= ASSETS_URL ?>sites/all/themes/alsf_adaptive/scripts/main.js"></script>
 <script src="<?= ASSETS_URL ?>sites/all/themes/alsf_adaptive/scripts/responsive-tabs/js/jquery.responsiveTabs.min.js">
 </script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
 <script type="text/javascript">
 var $ = jQuery.noConflict();
 var site_url = '<?= SITE_URL ?>';
+var fee_checked = 0,
+  gift_checked = 0;
+var fee = 0;
+google.maps.event.addDomListener(window, 'load', function() {
+  var places = new google.maps.places.Autocomplete(document
+    .getElementById('txtPlaces'));
+  google.maps.event.addListener(places, 'place_changed', function() {
+    var place = places.getPlace();
+    var address = place.formatted_address;
+    var value = address.split(",");
+    count = value.length;
+    country = value[count - 1];
+    state = value[count - 2];
+    city = value[count - 3];
+    var z = state.split(" ");
+    document.getElementById("selCountry").text = country;
+    var i = z.length;
+    document.getElementById("pstate").value = z[1];
+    if (i > 2)
+      document.getElementById("pzcode").value = z[2];
+    document.getElementById("pCity").value = city;
+    var latitude = place.geometry.location.lat();
+    var longitude = place.geometry.location.lng();
+    var mesg = address;
+    document.getElementById("txtPlaces").value = mesg;
+    var lati = latitude;
+    document.getElementById("plati").value = lati;
+    var longi = longitude;
+    document.getElementById("plongi").value = longi;
+  });
+});
+
+
+function isValidEmail(email) {
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return emailRegex.test(email);
+}
+
 $("#more-show").on('click', function() {
   if ($("#more-show-text").hasClass('detail-show'))
     $("#more-show-text").removeClass('detail-show');
@@ -387,7 +474,7 @@ $("#pre-donate").on('click', function() {
     return;
   }
   modal.style.display = "block";
-  $('#amount').val($("#pre-donate-input").val());
+  $('#amount').text($("#pre-donate-input").val() + "$");
   $('#first_name').val("");
   $('#last_name').val("");
   $('#business').val("");
@@ -396,14 +483,24 @@ $("#pre-donate").on('click', function() {
   $("#donate_prev").hide();
   $("#donate_next").show();
   $("#donate_submit").hide();
-  $(".modal-section1").hide();
-  $(".modal-section2").show();
-});
-var fee_checked = 0;
-$("#fee").on('click', function() {
-  fee_checked = 1 - fee_checked;
+  $(".modal-section1").show();
+  $(".modal-section2").hide();
   var val = $("#pre-donate-input").val();
-  $("#amount").val(val * 1 + (val * 0.029 + 0.003) * fee_checked);
+  fee = Math.ceil((val * 0.029 + 0.003) * 10) / 10;
+  $("#fee-content").text($("#fee-content").text().replace("###", fee));
+  if (gift_checked == 1) $(".gift-part").show();
+  else $(".gift-part").hide();
+});
+
+$("#item-fee").on('click', function() {
+  fee_checked = 1 - fee_checked;
+  $("#fee-amount").text(fee * fee_checked + "$");
+  $("#total-amount").text($("#pre-donate-input").val() * 1 + fee * fee_checked + "$");
+})
+$("#gift-checked").on('click', function() {
+  gift_checked = 1 - gift_checked;
+  if (gift_checked == 1) $(".gift-part").show();
+  else $(".gift-part").hide();
 })
 $("#donate_submit").on('click', function() {
   if ($('#first_name').val() === "") {
@@ -426,21 +523,18 @@ $("#donate_submit").on('click', function() {
     $('#location').focus();
     return;
   }
-  if ($('#amount').val() === "") {
-    alert("Input Amount!");
-    return;
-  }
-  $("#paypal-form").submit();
-  $.post(site_url + 'pages/add', {
-    username: $('#first_name').val() + " " + $('#second_name').val(),
-    business: $('#business').val(),
-    location: $('#location').val(),
-    amount: $('#amount').val()
-  }, function(data, statue, err) {
-    var dt = data;
-    alert(data['statue']);
-    $("#paypal-form").submit();
-  })
+  // $("#paypal-form").submit();
+
+  // $.post(site_url + 'pages/add', {
+  // username: $('#first_name').val() + " " + $('#second_name').val(),
+  // business: $('#business').val(),
+  // location: $('#location').val(),
+  // amount: ($('#amount').html()).split("$")[0],
+  // }, function(data, statue, err) {
+  // var dt = data;
+  // alert(data['statue']);
+  // $("#paypal-form").submit();
+  // })
 });
 $(window).on("scroll touchmove", function() {
   $("#leaderboard-wrapper").toggleClass("tiny", $(document).scrollTop() > 60);
@@ -448,6 +542,20 @@ $(window).on("scroll touchmove", function() {
 });
 
 $("#donate_next").on('click', function() {
+  if (gift_checked == 1) {
+    if ($("#gift_name").val() == "") {
+      $("#gift_name").focus();
+      return;
+    }
+    if (!isValidEmail($("#gift_email").val())) {
+      $("#gift_email").focus();
+      return;
+    }
+    if ($("#gift_message").val() == "") {
+      $("#gift_message").focus();
+      return;
+    }
+  }
   $("#donate_prev").show();
   $("#donate_next").hide();
   $("#donate_submit").show();
@@ -466,7 +574,8 @@ $("#donate_prev").on('click', function() {
 
 var page = "<?= $statue ?>";
 console.log(page);
-if (page == "schools" || page == "businesses" || page == "faq" || page == "contact" || page == "privacy_policy" ||
+if (page == "schools" || page == "businesses" || page == "faq" || page == "contact" || page ==
+  "privacy_policy" ||
   page == "terms_of_use") {
   $(".sponsor").addClass('sponsor-hide');
 } else {
