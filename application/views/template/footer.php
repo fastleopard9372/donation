@@ -235,18 +235,18 @@ async
   </div>
 </div>
 
-<div id="myModal" class="modal">
+<div id="myModal" class="modal donation-modal">
   <!-- Modal content -->
   <div class="modal-content">
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2>Donate</h2>
+      <h2>DONATE</h2>
     </div>
+    <!-- border:#437ed6 solid 3px; -->
     <div class="modal-body">
-      <div id="donateSection"
-        style="padding:10px;margin:15px;display:flex;justify-content:center; border:#437ed6 solid 3px;">
-        <form class="google-cse" action="<?= base_url('/index.php/products/donate') ?>" target="_top" method="post"
-          id="paypal-form" accept-charset="UTF-8">
+      <div id="donateSection" style="padding:10px;margin:15px;display:flex;justify-content:center;">
+        <form class="google-cse donation-form" action="<?= base_url('/index.php/products/donate') ?>" target="_top"
+          method="post" id="paypal-form" accept-charset="UTF-8">
           <div>
             <div class="form-container">
               <div class="form-line">
@@ -291,10 +291,10 @@ async
             </div>
             <input type='hidden' name='item_name' value='Donation'>
             <input type='hidden' name='item_number' value='donation#N1'>
-            <div class="form-actions my-text form-wrapper" id="edit-actions"
-              style="display:flex; justify-content:center;">
-              <img src="<?= ASSETS_URL ?>images/btn.png" id="donate_submit"
-                style="cursor:pointer;width:100px !important;" />
+            <div class="form-actions my-text form-wrapper" id="edit-actions">
+              <button type="button" id="donate_next">Next</button>
+              <button type="button" id="donate_prev">prev</button>
+              <button type="button" id="donate_submit">Donate</button>
             </div>
           </div>
         </form>
@@ -305,7 +305,7 @@ async
 </div>
 <?php
 if (isset($username)) {
-    echo '<script>alert("thank you!!!")</script>';
+  echo '<script>alert("thank you!!!")</script>';
 }
 ?>
 <!-- The Modal -->
@@ -377,14 +377,15 @@ $("#more-show").on('click', function() {
 });
 
 $(".donate_btn").on('click', function() {
-  if ($('#amount').val() === 0) {
-    alert("Please select box!");
-    $('#amount').focus();
-    return;
-  }
   $("#pre-donate-input").val($(this).attr('amount'));
 })
 $("#pre-donate").on('click', function() {
+  if ($("#pre-donate-input").val() == 0 || $("#pre-donate-input").val() == "" || $("#pre-donate-input").val() ==
+    '0') {
+    alert("Please select box!");
+    $("#pre-donate-input").focus();
+    return;
+  }
   modal.style.display = "block";
   $('#amount').val($("#pre-donate-input").val());
   $('#first_name').val("");
@@ -392,6 +393,11 @@ $("#pre-donate").on('click', function() {
   $('#business').val("");
   $('#location').val("");
   $('#first_name').focus();
+  $("#donate_prev").hide();
+  $("#donate_next").show();
+  $("#donate_submit").hide();
+  $(".modal-section1").hide();
+  $(".modal-section2").show();
 });
 var fee_checked = 0;
 $("#fee").on('click', function() {
@@ -440,6 +446,24 @@ $(window).on("scroll touchmove", function() {
   $("#leaderboard-wrapper").toggleClass("tiny", $(document).scrollTop() > 60);
   $("#header").toggleClass("shrink", $(document).scrollTop() > 60);
 });
+
+$("#donate_next").on('click', function() {
+  $("#donate_prev").show();
+  $("#donate_next").hide();
+  $("#donate_submit").show();
+  $(".modal-section1").hide();
+  $(".modal-section2").show();
+})
+
+$("#donate_prev").on('click', function() {
+  $("#donate_prev").hide();
+  $("#donate_next").show();
+  $("#donate_submit").hide();
+  $(".modal-section1").show();
+  $(".modal-section2").hide();
+})
+
+
 var page = "<?= $statue ?>";
 console.log(page);
 if (page == "schools" || page == "businesses" || page == "faq" || page == "contact" || page == "privacy_policy" ||

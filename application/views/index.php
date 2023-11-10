@@ -369,8 +369,8 @@
                                         <div class="form-item form-type-textfield form-item-search-block-form "
                                           style="position:relative;">
                                           <p style="position:absolute;right:5px;padding-top:8px">$</p>
-                                          <input type="text" name="name" id="pre-donate-input" value="0" placeholder="
-                                            50" class="form-text form-input " />
+                                          <input type="text" name="name" id="pre-donate-input" value="0"
+                                            placeholder="50" class="form-text form-input " />
                                         </div>
                                         <div class="form-actions form-wrapper full-width">
                                           <button type="button" id="pre-donate">Donate</button>

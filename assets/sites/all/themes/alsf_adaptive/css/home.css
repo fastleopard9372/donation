@@ -818,10 +818,11 @@ body.front {
   display: flex;
   flex-grow: 1;
 }
-.full-width button {
+button {
   margin-right: 0;
   width: 100%;
-  background-color: rgb(230, 98, 10);
+  background-color: rgb(230, 98, 10) !important;
+  border-radius: 0px !important;
   box-shadow: none;
 }
 .full-width button:hover {

@@ -946,7 +946,13 @@ body {
   .full-width .event-details strong {
     width: auto !important;
   }
-  .section-campaign #content-column .content-inner #main-content #block-system-main .field-name-body .campaign-nav {
+  .section-campaign
+    #content-column
+    .content-inner
+    #main-content
+    #block-system-main
+    .field-name-body
+    .campaign-nav {
     padding: 20px 0;
     width: 100% !important;
   }
@@ -961,7 +967,13 @@ body {
   .campaign-description .field-name-body p {
     clear: both;
   }
-  .section-campaign #content-column .content-inner #main-content #block-system-main .field-name-body h3 {
+  .section-campaign
+    #content-column
+    .content-inner
+    #main-content
+    #block-system-main
+    .field-name-body
+    h3 {
     width: 100% !important;
   }
   .page-user .logout {
@@ -1007,7 +1019,7 @@ body {
   .js-select select,
   textarea.form-textarea,
   select {
-    width: 90%;
+    width: 100%;
   }
   #crm-container .first_name-section input.form-text,
   #crm-container .last_name-section input.form-text,
@@ -1229,7 +1241,9 @@ body {
   #taylor .row-full-1 {
     padding: 7% 0 0;
   }
-  #taylor .panels-flexible-region .panels-flexible-region-alsf_campaign_layout-row-halves-1-left-region-inside,
+  #taylor
+    .panels-flexible-region
+    .panels-flexible-region-alsf_campaign_layout-row-halves-1-left-region-inside,
   #taylor .panels-flexible-region-alsf_campaign_layout-row-full-1-full-region-inside,
   #taylor .panels-flexible-region-alsf_campaign_layout-row-full-3-full-region-inside {
     padding: 3% 20px;

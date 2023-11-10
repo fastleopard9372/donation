@@ -1,0 +1,4 @@
+global.custom.css
+ 1009 : width:100%
+global.styles.css
+5620 : margin-right: 10px; //0
