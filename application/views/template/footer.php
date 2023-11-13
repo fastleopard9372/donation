@@ -238,10 +238,6 @@ async
 <div id="myModal" class="modal donation-modal">
   <!-- Modal content -->
   <div class="modal-content">
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <h2>DONATE</h2>
-    </div>
     <!-- border:#437ed6 solid 3px; -->
     <div class="modal-body">
       <div id="donateSection" style="padding:10px;margin:15px;display:flex;justify-content:center;">
@@ -275,8 +271,7 @@ async
                 <div class="views-field form-text item-content" id="total-amount">3.5$</div>
               </div>
               <div class='modal-section-title' id="gift-checked">Make this donation a holiday
-                gift for
-                a loved one</div>
+                gift for a loved one</div>
               <div class="gift-part form-container">
                 <div class="form-line">
                   <div class="views-field form-text">Name</div>
@@ -303,6 +298,7 @@ async
             </div>
             <!-- TODO: section2 -->
             <div class="modal-section2 form-container">
+              <div class='modal-section-title'>Personal Information</div>
               <div class="form-line">
                 <div class="views-field form-text">First Name</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
@@ -318,24 +314,60 @@ async
               <div class="form-line">
                 <div class="views-field form-text">Email</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="email" name="business" id="business" placeholder="" class="form-text form-input" />
+                  <input type="email" name="email" id="email" placeholder="" class="form-text form-input" />
                 </div>
               </div>
-              <div class="form-line">
-                <div class="views-field form-text">Location</div>
-                <div class="form-item my-text  form-type-textfield form-item-search-block-form">
-                  <input type="text" name="location" id="location" placeholder="Salt Lake City, UT"
-                    class="form-text form-input" />
-                </div>
-              </div>
-              <div class="form-line">
-                <div class="views-field form-text">Amount</div>
-                <!-- <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="number" name="amount" id="amount" placeholder="amount(USD)"
-                    class="form-text form-input" />
-                </div> -->
-              </div>
+              <!-- TODO: section3 -->
 
+              <div class='modal-section-title' style="margin-top:10px;">Billing Information</div>
+              <div class="form-line">
+                <div class="views-field form-text">Address</div>
+                <div class="form-item my-text form-type-textfield form-item-search-block-form">
+                  <input type="text" name="address" id="address" placeholder="" class="form-text form-input" />
+                </div>
+              </div>
+              <div class="form-line">
+                <div class="views-field form-text">Address Line2</div>
+                <div class="form-item my-text form-type-textfield form-item-search-block-form">
+                  <input type="text" name="address_line2" id="address_line2" placeholder=""
+                    class="form-text form-input" />
+                </div>
+              </div>
+              <div class="form-line">
+                <div class="views-field form-text">City</div>
+                <div class="form-item my-text form-type-textfield form-item-search-block-form">
+                  <input type="text" name="city" id="city" placeholder="" class="form-text form-input" />
+                </div>
+              </div>
+              <div class="form-colum">
+                <div class="form-line">
+                  <div class="views-field form-text">State</div>
+                  <div class="form-item my-text form-type-textfield form-item-search-block-form">
+                    <input type="text" name="state" id="state" placeholder="" class="form-text form-input" />
+                  </div>
+                </div>
+                <div class="form-line">
+                  <div class="views-field form-text">Postal Code</div>
+                  <div class="form-item my-text form-type-textfield form-item-search-block-form">
+                    <input type="text" name="postal_code" id="postal_code" placeholder=""
+                      class="form-text form-input" />
+                  </div>
+                </div>
+
+              </div>
+              <div class="form-line">
+                <div class="views-field form-text">Country</div>
+                <div class="form-item my-text form-type-textfield form-item-search-block-form">
+                  <input type="text" name="country" id="country" placeholder="" class="form-text form-input" />
+                </div>
+              </div>
+              <div class='modal-section-title' style="margin-top:10px;">Card Information</div>
+              <div class="form-line">
+                <div class="views-field form-text">card_number</div>
+                <div class="form-item my-text form-type-textfield form-item-search-block-form">
+                  <input type="text" name="card_number" id="card_number" placeholder="" class="form-text form-input" />
+                </div>
+              </div>
             </div>
             <input type='hidden' name='item_name' value='Donation'>
             <input type='hidden' name='item_number' value='donation#N1'>
@@ -421,6 +453,7 @@ var site_url = '<?= SITE_URL ?>';
 var fee_checked = 0,
   gift_checked = 0;
 var fee = 0;
+
 google.maps.event.addDomListener(window, 'load', function() {
   var places = new google.maps.places.Autocomplete(document
     .getElementById('txtPlaces'));
@@ -475,9 +508,10 @@ $("#pre-donate").on('click', function() {
   }
   modal.style.display = "block";
   $('#amount').text($("#pre-donate-input").val() + "$");
+
   $('#first_name').val("");
   $('#last_name').val("");
-  $('#business').val("");
+  $('#email').val("");
   $('#location').val("");
   $('#first_name').focus();
   $("#donate_prev").hide();
@@ -513,9 +547,9 @@ $("#donate_submit").on('click', function() {
     $('#last_name').focus();
     return;
   }
-  if ($('#business').val() === "") {
-    alert("Input Business!");
-    $('#business').focus();
+  if (!isValidEmail($("#email").val())) {
+    alert("Input your Email!");
+    $('#email').focus();
     return;
   }
   if ($('#location').val() === "") {

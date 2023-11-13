@@ -150,6 +150,10 @@ button {
   border: none !important;
   display: block !important;
 }
+.form-colum {
+  display: flex !important;
+  justify-content: space-between !important;
+}
 .donation-form {
   width: 100%;
 }
@@ -163,6 +167,7 @@ button {
 #donate_submit {
   margin-left: 5px;
 }
+
 .modal-section1 .form-line {
   display: flex;
   justify-content: space-between;
@@ -218,6 +223,14 @@ button {
   .modal-img img {
     width: 100%;
     max-width: 100px !important;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .modal {
+    padding-top: 0px !important;
+  }
+  .donation-modal .modal-content {
+    height: 100vh;
   }
 }
 .modal-section2 {
