@@ -192,9 +192,30 @@ button {
 .modal-section1 .total .views-field {
   font-weight: 800 !important;
 }
+.donation-modal .modal-header {
+  position: relative;
+  background-color: #437ed6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-close {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.btn-close img {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
 .modal-img {
   border: none !important;
   margin-top: 10px;
+  width: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .modal-img img {
   margin: auto;

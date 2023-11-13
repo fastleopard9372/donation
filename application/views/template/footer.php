@@ -239,6 +239,14 @@ async
   <!-- Modal content -->
   <div class="modal-content">
     <!-- border:#437ed6 solid 3px; -->
+    <div class="modal-header">
+      <div class="form-line modal-img">
+        <img src="<?= ASSETS_URL ?>sites/default/files/logo_tr1.png" alt="logo" />
+      </div>
+      <div class="btn-close">
+        <img src="<?= ASSETS_URL ?>images/close.svg" />
+      </div>
+    </div>
     <div class="modal-body">
       <div id="donateSection" style="padding:10px;margin:15px;display:flex;justify-content:center;">
         <form class="google-cse donation-form" action="<?= base_url('/index.php/products/donate') ?>" target="_top"
@@ -246,9 +254,7 @@ async
           <div>
             <!-- TODO: section1 -->
             <div class="modal-section1 form-container">
-              <div class="form-line modal-img">
-                <img src="<?= ASSETS_URL ?>sites/default/files/favicon.png" alt="logo" width="100px" />
-              </div>
+
               <div class='modal-section-title'>Give the gift of reading</div>
               <div class="form-line">
                 <div class="views-field form-text item-title">Donation Amount</div>
