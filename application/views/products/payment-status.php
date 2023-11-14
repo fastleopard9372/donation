@@ -9,7 +9,7 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Include custom css -->
-  <link href="<?php echo base_url('assets/css/style.css'); ?>" rel="stylesheet">
+  <link href="<?= BASE_URL . 'assets/css/style.css'; ?>" rel="stylesheet">
 </head>
 
 <body>

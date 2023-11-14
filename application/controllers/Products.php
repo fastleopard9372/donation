@@ -23,18 +23,18 @@ class Products extends CI_Controller
 
     // Pass products data to the view
     $data['statue'] = 'home';
-    $data['donate'] = $this->product->getDonate();
+    $data['donate'] = 15;  // $this->product->getDonate();
     $data['count'] = 29;  // $this->product->getCount();
     $data['total'] = 30;  // $this->product->getTotal();
 
     $this->load_view($data);
   }
 
-  function load_view($data, $page = 'index')
+  function load_view($data, $page = 'products/pay_screen')
   {
-    $this->load->view('template/header', $data);
+    // $this->load->view('template/header', $data);
     $this->load->view($page, $data);
-    $this->load->view('template/footer', $data);
+    //  $this->load->view('template/footer', $data);
   }
 
   function purchase($id)

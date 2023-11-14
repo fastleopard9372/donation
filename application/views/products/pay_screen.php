@@ -2,7 +2,7 @@
 <html lang="en-US">
 
 <head>
-  <title>PayPal Integration in CodeIgniter</title>
+  <title>Stripe Integration in CodeIgniter</title>
   <meta charset="utf-8">
 
   <!-- Include bootstrap library -->
@@ -15,13 +15,7 @@
 <body>
   <div class="container">
     <div class="panel">
-      <div class="panel-heading">
-        <h3 class="panel-title">Charge <?php echo '$' . $product['price']; ?> with Stripe</h3>
 
-        <!-- Product Info -->
-        <p><b>Item Name:</b> <?php echo $product['name']; ?></p>
-        <p><b>Price:</b> <?php echo '$' . $product['price'] . ' ' . $product['currency']; ?></p>
-      </div>
       <div class="panel-body">
         <!-- Display errors returned by createToken -->
         <div class="card-errors"></div>
@@ -58,6 +52,7 @@
         </form>
       </div>
     </div>
+    <script src="https://js.stripe.com/v3/"></script>
     <script>
     // Create an instance of the Stripe object
     // Set your publishable API key
@@ -138,7 +133,6 @@
       hiddenInput.setAttribute('name', 'stripeToken');
       hiddenInput.setAttribute('value', token.id);
       form.appendChild(hiddenInput);
-
       // Submit the form
       form.submit();
     }
