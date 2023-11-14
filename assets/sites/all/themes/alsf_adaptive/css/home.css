@@ -821,12 +821,12 @@ body.front {
 button {
   margin-right: 0;
   width: 100%;
-  background-color: rgb(230, 98, 10) !important;
+  background-color: #437ed6 !important;
   border-radius: 0px !important;
   box-shadow: none;
 }
 .full-width button:hover {
-  background-color: rgb(240, 122, 43);
+  background-color: #679ef0 !important;
 }
 
 .front .region-alsf-row-5-right input {

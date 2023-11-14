@@ -39,10 +39,10 @@
   <link rel="icon" href="<?= ASSETS_URL ?>sites/default/files/favicon.png" />
   <link rel="mask-icon" href="<?= ASSETS_URL ?>sites/default/files/favicon.png" />
   <link rel="apple-touch-icon" href="<?= ASSETS_URL ?>sites/default/files/favicon.png" />
-  <link rel="manifest" href="<?= ASSETS_URL ?>sites/all/themes/alsf_adaptive/favicon/manifest.json" />
+
 
   <style>
-  var assets_url=<?=ASSETS_URL ?>;
+  var assets_url=<?= ASSETS_URL ?>;
   @import url("<?= ASSETS_URL ?>sites/all/modules/contrib/jquery_update/replace/ui/themes/base/minified/jquery.ui.core.min.css");
   @import url("<?= ASSETS_URL ?>sites/all/modules/contrib/jquery_update/replace/ui/themes/base/minified/jquery.ui.theme.min.css");
   @import url("<?= ASSETS_URL ?>sites/all/modules/contrib/jquery_update/replace/ui/themes/base/minified/jquery.ui.tabs.min.css");

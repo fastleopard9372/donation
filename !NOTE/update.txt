@@ -4,3 +4,6 @@ global.styles.css
 5620 : margin-right: 10px; //0
 
 home.css
+
+
+action="<?= base_url('/index.php/products/donate') ?>"

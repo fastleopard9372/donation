@@ -16,12 +16,12 @@
 button {
   margin-right: 0;
   width: 100%;
-  background-color: rgb(230, 98, 10) !important;
+  background-color: #437ed6 !important;
   border-radius: 0px !important;
   box-shadow: none !important;
 }
 .full-width button:hover {
-  background-color: rgb(240, 122, 43) !important;
+  background-color: #679ef0 !important;
 }
 /* For desktop: */
 .col-1 {
@@ -78,7 +78,7 @@ button {
 }
 .views-field {
   color: black;
-  font-family: "Zilla Slab", serif;
+  /* font-family: "Zilla Slab", serif; */
   font-size: 29px;
   font-weight: 500;
   letter-spacing: -0.5px;
@@ -171,8 +171,9 @@ button {
 .modal-section1 .form-line {
   display: flex;
   justify-content: space-between;
-  margin: 2px 10px 2px 5px;
-  border-bottom: #999999 solid 1px;
+  margin: 2px 10px 5px 5px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e0e0e0;
 }
 .modal-section1 .form-line .item-content {
   text-align: right;
@@ -180,17 +181,50 @@ button {
 .modal-section1 .form-line .item-title {
   padding-right: 10px;
 }
+.form-line .form-text {
+  font-size: 15px;
+}
+a.fee-edit {
+  cursor: pointer;
+  background-color: #fff !important;
+  border: 1px solid #e0e0e0 !important;
+  font-weight: 600 !important;
+  margin-right: 1rem !important;
+  margin-top: 0px !important;
+  padding: 5px 7px !important;
+  outline: none;
+  width: unset;
+  height: 30px !important;
+  color: #232323;
+  transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    -webkit-box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+a.fee-edit:hover {
+  box-shadow: 0 0 4px 2px #d8d8d8 !important;
+  color: #565656 !important;
+}
 .modal-section1 .form-line-inner {
   display: flex;
   justify-content: space-between;
   margin: 5px 20px 2px 25px;
-  padding: 3px;
-  background-color: #dbdbdb;
-  border-radius: 10px;
-  border: #aaaaaa dashed 1px;
+  padding: 1.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+#fee-content {
+  font-size: 15px !important;
 }
 .modal-section1 .total .views-field {
   font-weight: 800 !important;
+}
+.donation-modal {
+  font-family: "Helvetica" !important;
+}
+#donateSection {
+  padding: 10px;
+  margin: 15px;
+  display: flex;
+  justify-content: center;
 }
 .donation-modal .modal-header {
   position: relative;
@@ -202,11 +236,11 @@ button {
 .btn-close {
   position: absolute;
   top: 10px;
-  left: 10px;
+  right: 10px;
 }
 .btn-close img {
-  width: 32px;
-  height: 32px;
+  width: 32px !important;
+  height: 32px !important;
   cursor: pointer;
 }
 .modal-img {
@@ -222,9 +256,10 @@ button {
 }
 .modal-section-title,
 .modal-section-title .item-content {
-  font-size: 20px;
-  font-weight: 900;
-  color: black;
+  font-size: 14px !important;
+  color: #757575;
+  line-height: 135%;
+  text-align: center;
 }
 #gift-checked {
   text-decoration: underline;
@@ -236,9 +271,12 @@ button {
   color: #f83b3b;
 }
 .gift-section {
-  margin-left: -5px;
   display: flex;
   justify-content: flex-start;
+}
+.gift-section div {
+  font-size: 15px !important;
+  padding-top: 15px !important;
 }
 @media only screen and (max-width: 767px) {
   .modal-img img {
@@ -251,7 +289,10 @@ button {
     padding-top: 0px !important;
   }
   .donation-modal .modal-content {
-    height: 100vh;
+    min-height: 100vh;
+  }
+  #donateSection {
+    overflow-y: auto;
   }
 }
 .modal-section2 {
@@ -462,4 +503,102 @@ img {
   .text {
     font-size: 11px;
   }
+}
+
+/**
+ * @license
+ * Copyright 2019 Google LLC. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
+ */
+/* 
+ * Always set the map height explicitly to define the size of the div element
+ * that contains the map. 
+ */
+#map {
+  height: 100%;
+}
+
+/* 
+ * Optional: Makes the sample page fill the window. 
+ */
+
+/* 
+form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 400px;
+  padding: 20px;
+}
+
+input {
+  width: 100%;
+  margin-top: 0;
+  padding: 0.5em;
+  border: 0;
+  border-bottom: 2px solid gray;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+}
+
+input[type="reset"] {
+  width: auto;
+  height: auto;
+  border-bottom: 0;
+  background-color: transparent;
+  color: rgb(104, 104, 104);
+  font-size: 14px;
+} */
+
+.title {
+  width: 100%;
+  margin-block-end: 0;
+  font-weight: 500;
+}
+
+.note {
+  width: 100%;
+  margin-block-start: 0;
+  font-size: 12px;
+}
+
+.form-label {
+  width: 100%;
+  padding: 0.5em;
+}
+
+.full-field {
+  flex: 400px;
+  margin: 15px 0;
+}
+
+.slim-field-left {
+  flex: 1 150px;
+  margin: 15px;
+  margin-inline-start: 0;
+}
+
+.slim-field-right {
+  flex: 1 150px;
+  margin: 15px;
+  margin-inline-end: 0;
+}
+
+.my-button {
+  background-color: #000;
+  border-radius: 6px;
+  color: #fff;
+  margin: 10px;
+  cursor: pointer;
+  padding: 6px 24px;
+  text-decoration: none;
+}
+
+.my-button:hover {
+  background-color: #666;
+}
+
+.my-button:active {
+  position: relative;
+  top: 1px;
 }

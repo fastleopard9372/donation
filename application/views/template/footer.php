@@ -243,14 +243,13 @@ async
       <div class="form-line modal-img">
         <img src="<?= ASSETS_URL ?>sites/default/files/logo_tr1.png" alt="logo" />
       </div>
-      <div class="btn-close">
+      <div class="btn-close close">
         <img src="<?= ASSETS_URL ?>images/close.svg" />
       </div>
     </div>
     <div class="modal-body">
-      <div id="donateSection" style="padding:10px;margin:15px;display:flex;justify-content:center;">
-        <form class="google-cse donation-form" action="<?= base_url('/index.php/products/donate') ?>" target="_top"
-          method="post" id="paypal-form" accept-charset="UTF-8">
+      <div id="donateSection">
+        <form class="google-cse donation-form" target="_top" method="post" id="paypal-form" accept-charset="UTF-8">
           <div>
             <!-- TODO: section1 -->
             <div class="modal-section1 form-container">
@@ -258,26 +257,33 @@ async
               <div class='modal-section-title'>Give the gift of reading</div>
               <div class="form-line">
                 <div class="views-field form-text item-title">Donation Amount</div>
-                <div class="views-field form-text item-content" id="amount">50$</div>
+                <div class="views-field form-text item-content" id="amount">$50</div>
               </div>
               <div class="form-line">
                 <div class="views-field form-text item-title" style="flex-grow:1;">Cover Fees</div>
-                <div class="views-field form-text item-content" id="fee-amount">0$</div>
+                <!-- <a class="fee-edit">Please add $ to cover processing fees...</a> -->
+                <div class="views-field form-text item-content" id="fee-amount">$0</div>
               </div>
               <div class="form-line-inner">
                 <div class="views-field form-text item-title">
                   <input type="checkbox" class="view-field form-text " id="item-fee"></input>
                 </div>
-                <div class="views-field form-text item-content " id="fee-content">Please add ###$ to cover processing
+                <div class="views-field form-text item-content " id="fee-content">Please add ### to cover processing
                   fees
                   associated with my donation.</div>
               </div>
               <div class="form-line total">
                 <div class="views-field form-text item-title">Total Donation Amount</div>
-                <div class="views-field form-text item-content" id="total-amount">3.5$</div>
+                <div class="views-field form-text item-content" id="total-amount">$3.5</div>
               </div>
-              <div class='modal-section-title' id="gift-checked">Make this donation a holiday
-                gift for a loved one</div>
+              <div class='gift-section'>
+                <input type="checkbox" id="gift-checked"></input>
+                <div class="views-field form-text item-content">
+                  Would you like to make this
+                  donation a holiday gift for
+                  someone?
+                </div>
+              </div>
               <div class="gift-part form-container">
                 <div class="form-line">
                   <div class="views-field form-text">Name</div>
@@ -369,7 +375,7 @@ async
               </div>
               <div class='modal-section-title' style="margin-top:10px;">Card Information</div>
               <div class="form-line">
-                <div class="views-field form-text">card_number</div>
+                <div class="views-field form-text">Card Number</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
                   <input type="text" name="card_number" id="card_number" placeholder="" class="form-text form-input" />
                 </div>
@@ -384,6 +390,37 @@ async
             </div>
           </div>
         </form>
+        <!-- <form id="address-form" action="" method="get" autocomplete="on">
+          <p class="title">Sample address form for North America</p>
+          <p class="note"><em>* = required field</em></p>
+          <label class="full-field">
+            <span class="form-label">Deliver to*</span>
+            <input id="ship-address" name="ship-address" required autocomplete="off" />
+          </label>
+          <label class="full-field">
+            <span class="form-label">Apartment, unit, suite, or floor #</span>
+            <input id="address2" name="address2" />
+          </label>
+          <label class="full-field">
+            <span class="form-label">City*</span>
+            <input id="locality" name="locality" required />
+          </label>
+          <label class="slim-field-start">
+            <span class="form-label">State/Province*</span>
+            <input id="state" name="state" required />
+          </label>
+          <label class="slim-field-end" for="postal_code">
+            <span class="form-label">Postal code*</span>
+            <input id="postcode" name="postcode" required />
+          </label>
+          <label class="full-field">
+            <span class="form-label">Country/Region*</span>
+            <input id="country" name="country" required />
+          </label>
+          <button type="button" class="my-button">Save address</button>
+
+          <input type="reset" value="Clear form" />
+        </form> -->
       </div>
     </div>
   </div>
@@ -432,8 +469,8 @@ window.onclick = function(event) {
 <script src="<?= ASSETS_URL ?>sites/all/libraries/flexslider/jquery.flexslider-min.js"></script>
 <script src="<?= ASSETS_URL ?>sites/all/modules/contrib/flexslider_views_slideshow/js/flexslider_views_slideshow.js">
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDoydmK_k0c7ZC5AvPsvyEMNk27qe35G0&amp;libraries=places">
-</script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDoydmK_k0c7ZC5AvPsvyEMNk27qe35G0&amp;libraries=places">
+</script> -->
 <script src="<?= ASSETS_URL ?>sites/all/modules/custom/alsf_pfp/js/alsf_pfp.search.js"></script>
 <script src="<?= ASSETS_URL ?>sites/all/modules/contrib/responsive_menus/styles/meanMenu/jquery.meanmenu.js">
 </script>
@@ -452,7 +489,12 @@ window.onclick = function(event) {
 <script src="<?= ASSETS_URL ?>sites/all/themes/alsf_adaptive/scripts/main.js"></script>
 <script src="<?= ASSETS_URL ?>sites/all/themes/alsf_adaptive/scripts/responsive-tabs/js/jquery.responsiveTabs.min.js">
 </script>
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+<!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script> -->
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initAutocomplete&libraries=places&v=weekly"
+  defer></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet" />
 <script type="text/javascript">
 var $ = jQuery.noConflict();
 var site_url = '<?= SITE_URL ?>';
@@ -460,34 +502,106 @@ var fee_checked = 0,
   gift_checked = 0;
 var fee = 0;
 
-google.maps.event.addDomListener(window, 'load', function() {
-  var places = new google.maps.places.Autocomplete(document
-    .getElementById('txtPlaces'));
-  google.maps.event.addListener(places, 'place_changed', function() {
-    var place = places.getPlace();
-    var address = place.formatted_address;
-    var value = address.split(",");
-    count = value.length;
-    country = value[count - 1];
-    state = value[count - 2];
-    city = value[count - 3];
-    var z = state.split(" ");
-    document.getElementById("selCountry").text = country;
-    var i = z.length;
-    document.getElementById("pstate").value = z[1];
-    if (i > 2)
-      document.getElementById("pzcode").value = z[2];
-    document.getElementById("pCity").value = city;
-    var latitude = place.geometry.location.lat();
-    var longitude = place.geometry.location.lng();
-    var mesg = address;
-    document.getElementById("txtPlaces").value = mesg;
-    var lati = latitude;
-    document.getElementById("plati").value = lati;
-    var longi = longitude;
-    document.getElementById("plongi").value = longi;
+// let regionNames = new Intl.DisplayNames(['en'], {
+//   type: 'region'
+// });
+// regionNames.of('US'); // "United States"
+// console.log('ddddddddddddddddddddddd', regionNames)
+
+/**
+ * @license
+ * Copyright 2019 Google LLC. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
+ */
+// This sample uses the Places Autocomplete widget to:
+// 1. Help the user select a place
+// 2. Retrieve the address components associated with that place
+// 3. Populate the form fields with those address components.
+// This sample requires the Places library, Maps JavaScript API.
+// Include the libraries=places parameter when you first load the API.
+// For example: <script
+// src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+let autocomplete;
+let address1Field;
+let address2Field;
+let postalField;
+
+function initAutocomplete() {
+  address1Field = document.querySelector("#ship-address");
+  address2Field = document.querySelector("#address2");
+  postalField = document.querySelector("#postcode");
+  // Create the autocomplete object, restricting the search predictions to
+  // addresses in the US and Canada.
+  autocomplete = new google.maps.places.Autocomplete(address1Field, {
+    componentRestrictions: {
+      country: ["us", "ca"]
+    },
+    fields: ["address_components", "geometry"],
+    types: ["address"],
   });
-});
+  address1Field.focus();
+  // When the user selects an address from the drop-down, populate the
+  // address fields in the form.
+  autocomplete.addListener("place_changed", fillInAddress);
+}
+
+function fillInAddress() {
+  // Get the place details from the autocomplete object.
+  const place = autocomplete.getPlace();
+  let address1 = "";
+  let postcode = "";
+
+  // Get each component of the address from the place details,
+  // and then fill-in the corresponding field on the form.
+  // place.address_components are google.maps.GeocoderAddressComponent objects
+  // which are documented at http://goo.gle/3l5i5Mr
+  for (const component of place.address_components) {
+    // @ts-ignore remove once typings fixed
+    const componentType = component.types[0];
+
+    switch (componentType) {
+      case "street_number": {
+        address1 = `${component.long_name} ${address1}`;
+        break;
+      }
+
+      case "route": {
+        address1 += component.short_name;
+        break;
+      }
+
+      case "postal_code": {
+        postcode = `${component.long_name}${postcode}`;
+        break;
+      }
+
+      case "postal_code_suffix": {
+        postcode = `${postcode}-${component.long_name}`;
+        break;
+      }
+      case "locality":
+        document.querySelector("#locality").value = component.long_name;
+        break;
+      case "administrative_area_level_1": {
+        document.querySelector("#state").value = component.short_name;
+        break;
+      }
+      case "country":
+        document.querySelector("#country").value = component.long_name;
+        break;
+    }
+  }
+
+  address1Field.value = address1;
+  postalField.value = postcode;
+  // After filling the form with address components from the Autocomplete
+  // prediction, set cursor focus on the second address line to encourage
+  // entry of subpremise information such as apartment, unit, or floor number.
+  address2Field.focus();
+}
+
+window.initAutocomplete = initAutocomplete;
+
 
 
 function isValidEmail(email) {
@@ -504,7 +618,7 @@ $("#more-show").on('click', function() {
 
 $(".donate_btn").on('click', function() {
   $("#pre-donate-input").val($(this).attr('amount'));
-})
+});
 $("#pre-donate").on('click', function() {
   if ($("#pre-donate-input").val() == 0 || $("#pre-donate-input").val() == "" || $("#pre-donate-input").val() ==
     '0') {
@@ -513,7 +627,7 @@ $("#pre-donate").on('click', function() {
     return;
   }
   modal.style.display = "block";
-  $('#amount').text($("#pre-donate-input").val() + "$");
+  $('#amount').text("$" + $("#pre-donate-input").val());
 
   $('#first_name').val("");
   $('#last_name').val("");
@@ -526,22 +640,34 @@ $("#pre-donate").on('click', function() {
   $(".modal-section1").show();
   $(".modal-section2").hide();
   var val = $("#pre-donate-input").val();
-  fee = Math.ceil((val * 0.029 + 0.003) * 10) / 10;
-  $("#fee-content").text($("#fee-content").text().replace("###", fee));
+  fee = Math.ceil((val * 0.029 + 0.003) * 100) / 100;
+  $("#fee-content").html($("#fee-content").html().replace("###", "$" + fee));
   if (gift_checked == 1) $(".gift-part").show();
   else $(".gift-part").hide();
+  $("#total-amount").text("$" + val);
 });
-
+//$(".form-line-inner").hide();
+var fee_show = false;
+$(".fee-edit").click(function() {
+  fee_show = !fee_show;
+  if (fee_show) {
+    $(".form-line-inner").show();
+    //   $('.fee-edit').text("Done");
+  } else {
+    $(".form-line-inner").hide();
+    //   $('.fee-edit').text("Edit");
+  }
+});
 $("#item-fee").on('click', function() {
   fee_checked = 1 - fee_checked;
-  $("#fee-amount").text(fee * fee_checked + "$");
-  $("#total-amount").text($("#pre-donate-input").val() * 1 + fee * fee_checked + "$");
-})
+  $("#fee-amount").text("$" + fee * fee_checked);
+  $("#total-amount").text("$" + ($("#pre-donate-input").val() * 1 + fee * fee_checked));
+});
 $("#gift-checked").on('click', function() {
   gift_checked = 1 - gift_checked;
   if (gift_checked == 1) $(".gift-part").show();
   else $(".gift-part").hide();
-})
+});
 $("#donate_submit").on('click', function() {
   if ($('#first_name').val() === "") {
     alert("Input First name!");
@@ -558,11 +684,38 @@ $("#donate_submit").on('click', function() {
     $('#email').focus();
     return;
   }
-  if ($('#location').val() === "") {
-    alert("Input Location!");
-    $('#location').focus();
+  if ($('#address').val() === "") {
+    alert("Input Address!");
+    $('#address').focus();
     return;
   }
+
+  if ($('#city').val() === "") {
+    alert("Input City!");
+    $('#city').focus();
+    return;
+  }
+  if ($('#state').val() === "") {
+    alert("Input State!");
+    $('#state').focus();
+    return;
+  }
+  if ($('#postal').val() === "") {
+    alert("Input Postal!");
+    $('#postal').focus();
+    return;
+  }
+  if ($('#country').val() === "") {
+    alert("Input Country!");
+    $('#country').focus();
+    return;
+  }
+  if ($('#card_number').val() === "") {
+    alert("Input Card Number!");
+    $('#card_number').focus();
+    return;
+  }
+
   // $("#paypal-form").submit();
 
   // $.post(site_url + 'pages/add', {
@@ -601,7 +754,7 @@ $("#donate_next").on('click', function() {
   $("#donate_submit").show();
   $(".modal-section1").hide();
   $(".modal-section2").show();
-})
+});
 
 $("#donate_prev").on('click', function() {
   $("#donate_prev").hide();
@@ -609,7 +762,7 @@ $("#donate_prev").on('click', function() {
   $("#donate_submit").hide();
   $(".modal-section1").show();
   $(".modal-section2").hide();
-})
+});
 
 
 var page = "<?= $statue ?>";
