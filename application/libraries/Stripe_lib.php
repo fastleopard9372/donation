@@ -52,7 +52,7 @@ class Stripe_lib
 
   function createCharge($customerId, $itemName, $itemPrice)
   {
-    // Convert price to cents
+    // Convert price to  cents
     $itemPriceCents = ($itemPrice * 100);
     $currency = $this->CI->config->item('stripe_currency');
 
