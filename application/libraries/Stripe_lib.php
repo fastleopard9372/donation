@@ -64,7 +64,6 @@ class Stripe_lib
         'currency' => $currency,
         'description' => $itemName
       ));
-
       // Retrieve charge details
       $chargeJson = $charge->jsonSerialize();
       return $chargeJson;

@@ -16,18 +16,20 @@
   <div class="container">
     <div class="panel">
       <div class="panel-heading">
+        <?php if (isset($product)) { ?>
         <h3 class="panel-title">Charge <?php echo '$' . $product['price']; ?> with Stripe</h3>
 
         <!-- Product Info -->
         <p><b>Item Name:</b> <?php echo $product['name']; ?></p>
         <p><b>Price:</b> <?php echo '$' . $product['price'] . ' ' . $product['currency']; ?></p>
+        <?php } ?>
       </div>
       <div class="panel-body">
         <!-- Display errors returned by createToken -->
         <div class="card-errors"></div>
 
         <!-- Payment form -->
-        <form action="" method="POST" id="paymentFrm">
+        <form action="<?= BASE_URL . 'index.php/products/purchase' ?>" method="POST" id="paymentFrm">
           <div class="form-group">
             <label>NAME</label>
             <input type="text" name="name" id="name" class="field" placeholder="Enter name" required="" autofocus="">
@@ -58,6 +60,7 @@
         </form>
       </div>
     </div>
+    <script src="https://js.stripe.com/v3/"></script>
     <script>
     // Create an instance of the Stripe object
     // Set your publishable API key

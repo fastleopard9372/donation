@@ -40,9 +40,8 @@
   <link rel="mask-icon" href="<?= ASSETS_URL ?>sites/default/files/favicon.png" />
   <link rel="apple-touch-icon" href="<?= ASSETS_URL ?>sites/default/files/favicon.png" />
 
-
   <style>
-  var assets_url=<?= ASSETS_URL ?>;
+  var assets_url=<?=ASSETS_URL ?>;
   @import url("<?= ASSETS_URL ?>sites/all/modules/contrib/jquery_update/replace/ui/themes/base/minified/jquery.ui.core.min.css");
   @import url("<?= ASSETS_URL ?>sites/all/modules/contrib/jquery_update/replace/ui/themes/base/minified/jquery.ui.theme.min.css");
   @import url("<?= ASSETS_URL ?>sites/all/modules/contrib/jquery_update/replace/ui/themes/base/minified/jquery.ui.tabs.min.css");
@@ -56,7 +55,7 @@
   @import url("<?= ASSETS_URL ?>modules/system/system.theme.css");
   @import url("<?= ASSETS_URL ?>sites/custom.css");
   </style>
-  <link type="text/css" rel="stylesheet" href="<?= ASSETS_URL ?>sites/custom.css" />
+
   <style>
   @import url("<?= ASSETS_URL ?>sites/all/modules/contrib/views_slideshow/views_slideshow.css");
   </style>
@@ -88,7 +87,7 @@
   <style media="screen">
   @import url("<?= ASSETS_URL ?>sites/all/themes/adaptivetheme/at_core/css/at.layout.css");
 
-  @import url("<?php echo base_url('assets/sites/all/themes/alsf_adaptive/scripts/responsive-tabs/css/style.css'); ?>");
+  @import url("<?= ASSETS_URL ?>sites/all/themes/alsf_adaptive/scripts/responsive-tabs/css/style.css");
   @import url("<?= ASSETS_URL ?>sites/all/themes/alsf_adaptive/scripts/responsive-tabs/css/responsive-tabs.css");
   @import url("<?= ASSETS_URL ?>sites/all/themes/alsf_adaptive/css/global.base.css");
   @import url("<?= ASSETS_URL ?>sites/all/themes/alsf_adaptive/css/global.styles.css");
@@ -133,6 +132,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600;1,700;1,900&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
     rel="stylesheet" />
+  <link type="text/css" rel="stylesheet" href="<?= ASSETS_URL ?>sites/custom.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script>
   window.jQuery || document.write(
@@ -167,7 +167,6 @@
       theme_token: "9Ihj_DJfpnkurXHD0ciqFxmKN74pskZuHoZx2LqJkcw",
       jquery_version: "1.8",
       css: {
-        "sites\/custom.css": 1,
         "misc\/ui\/jquery.ui.core.css": 1,
         "misc\/ui\/jquery.ui.theme.css": 1,
         "misc\/ui\/jquery.ui.tabs.css": 1,
@@ -221,6 +220,7 @@
         "sites\/all\/themes\/alsf_adaptive\/css\/responsive.tablet.landscape.css": 1,
         "sites\/all\/themes\/alsf_adaptive\/css\/responsive.desktop.css": 1,
         "public:\/\/adaptivetheme\/alsf_adaptive_files\/alsf_adaptive.lt-ie9.layout.css": 1,
+        "sites\/custom.css": 1,
       },
       js: {
         0: 1,

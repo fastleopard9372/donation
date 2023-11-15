@@ -249,7 +249,7 @@ async
     </div>
     <div class="modal-body">
       <div id="donateSection">
-        <form class="google-cse donation-form" target="_top" method="post" id="paypal-form" accept-charset="UTF-8">
+        <form action="<?= BASE_URL . 'index.php/products/purchase'; ?>" method="POST" id="paymentFrm">
           <div>
             <!-- TODO: section1 -->
             <div class="modal-section1 form-container">
@@ -274,7 +274,8 @@ async
               </div>
               <div class="form-line total">
                 <div class="views-field form-text item-title">Total Donation Amount</div>
-                <div class="views-field form-text item-content" id="total-amount">$3.5</div>
+                <div class="views-field form-text item-content" id="total-amount">$53.5</div>
+                <input type="hidden" id="amounts" name="amounts" value="53.5" />
               </div>
               <div class='gift-section'>
                 <input type="checkbox" id="gift-checked"></input>
@@ -311,22 +312,25 @@ async
             <!-- TODO: section2 -->
             <div class="modal-section2 form-container">
               <div class='modal-section-title'>Personal Information</div>
+              <div id="paymentResponse"></div>
               <div class="form-line">
                 <div class="views-field form-text">First Name</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="text" name="username" id="first_name" placeholder="" class="form-text form-input" />
+                  <input type="text" id="first_name" name="first_name" placeholder="" class="form-text form-input"
+                    required="" />
                 </div>
               </div>
               <div class="form-line">
                 <div class="views-field form-text">Last Name</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="text" name="last_name" id="last_name" placeholder="" class="form-text form-input" />
+                  <input type="text" name="last_name" id="last_name" placeholder="" class="form-text form-input"
+                    required="" />
                 </div>
               </div>
               <div class="form-line">
                 <div class="views-field form-text">Email</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="email" name="email" id="email" placeholder="" class="form-text form-input" />
+                  <input type="email" name="email" id="email" placeholder="" class="form-text form-input" required="" />
                 </div>
               </div>
               <!-- TODO: section3 -->
@@ -335,100 +339,83 @@ async
               <div class="form-line">
                 <div class="views-field form-text">Address</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="text" name="address" id="address" placeholder="" class="form-text form-input" />
+                  <input type="text" name="address" id="address" placeholder="" class="form-text form-input"
+                    required="" />
                 </div>
               </div>
               <div class="form-line">
                 <div class="views-field form-text">Address Line2</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="text" name="address_line2" id="address_line2" placeholder=""
-                    class="form-text form-input" />
+                  <input type="text" name="address_line2" id="address_line2" placeholder="" class="form-text form-input"
+                    required="" />
                 </div>
               </div>
               <div class="form-line">
                 <div class="views-field form-text">City</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="text" name="city" id="city" placeholder="" class="form-text form-input" />
+                  <input type="text" name="city" id="city" placeholder="" class="form-text form-input" required="" />
                 </div>
               </div>
               <div class="form-colum">
                 <div class="form-line">
                   <div class="views-field form-text">State</div>
                   <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                    <input type="text" name="state" id="state" placeholder="" class="form-text form-input" />
+                    <input type="text" name="state" id="state" placeholder="" class="form-text form-input"
+                      required="" />
                   </div>
                 </div>
                 <div class="form-line">
                   <div class="views-field form-text">Postal Code</div>
                   <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                    <input type="text" name="postal_code" id="postal_code" placeholder=""
-                      class="form-text form-input" />
+                    <input type="text" name="postal_code" id="postal_code" placeholder="" class="form-text form-input"
+                      required="" />
                   </div>
                 </div>
-
               </div>
               <div class="form-line">
                 <div class="views-field form-text">Country</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="text" name="country" id="country" placeholder="" class="form-text form-input" />
+                  <input type="text" name="country" id="country" placeholder="" class="form-text form-input"
+                    required="" />
                 </div>
               </div>
               <div class='modal-section-title' style="margin-top:10px;">Card Information</div>
-              <div class="form-line">
-                <div class="views-field form-text">Card Number</div>
-                <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="text" name="card_number" id="card_number" placeholder="" class="form-text form-input" />
+              <div class="form-group">
+                <div class="views-field form-text" style="font-size:15px;">Card Number</div>
+                <div id="card_number" class="form-field"></div>
+              </div>
+              <div class="form-colum">
+                <div class="form-line">
+                  <div class="form-group">
+                    <div class="views-field form-text">Expiry Date</div>
+                    <div id="card_expiry" class="form-field" style="width:100px;"></div>
+                  </div>
+                </div>
+                <div class="form-line">
+                  <div class="form-group">
+                    <div class="views-field form-text">Cvc Code</div>
+                    <div id="card_cvc" class="form-field" style="width:100px;"></div>
+                  </div>
                 </div>
               </div>
             </div>
-            <input type='hidden' name='item_name' value='Donation'>
-            <input type='hidden' name='item_number' value='donation#N1'>
+            <input type="hidden" id="kind" name="kind" value="0" />
             <div class="form-actions my-text form-wrapper" id="edit-actions">
               <button type="button" id="donate_next">Next</button>
               <button type="button" id="donate_prev">prev</button>
-              <button type="button" id="donate_submit">Donate</button>
+              <button type="submit" id="payBtn">Donate</button>
             </div>
           </div>
         </form>
-        <!-- <form id="address-form" action="" method="get" autocomplete="on">
-          <p class="title">Sample address form for North America</p>
-          <p class="note"><em>* = required field</em></p>
-          <label class="full-field">
-            <span class="form-label">Deliver to*</span>
-            <input id="ship-address" name="ship-address" required autocomplete="off" />
-          </label>
-          <label class="full-field">
-            <span class="form-label">Apartment, unit, suite, or floor #</span>
-            <input id="address2" name="address2" />
-          </label>
-          <label class="full-field">
-            <span class="form-label">City*</span>
-            <input id="locality" name="locality" required />
-          </label>
-          <label class="slim-field-start">
-            <span class="form-label">State/Province*</span>
-            <input id="state" name="state" required />
-          </label>
-          <label class="slim-field-end" for="postal_code">
-            <span class="form-label">Postal code*</span>
-            <input id="postcode" name="postcode" required />
-          </label>
-          <label class="full-field">
-            <span class="form-label">Country/Region*</span>
-            <input id="country" name="country" required />
-          </label>
-          <button type="button" class="my-button">Save address</button>
-
-          <input type="reset" value="Clear form" />
-        </form> -->
       </div>
     </div>
   </div>
 </div>
 </div>
+
 <?php
-if (isset($username)) {
-  echo '<script>alert("thank you!!!")</script>';
+if (isset($msg)) {
+  echo '<script>alert("' . $msg . '")</script>';
 }
 ?>
 <!-- The Modal -->
@@ -489,6 +476,7 @@ window.onclick = function(event) {
 <script src="<?= ASSETS_URL ?>sites/all/themes/alsf_adaptive/scripts/main.js"></script>
 <script src="<?= ASSETS_URL ?>sites/all/themes/alsf_adaptive/scripts/responsive-tabs/js/jquery.responsiveTabs.min.js">
 </script>
+<script src="https://js.stripe.com/v3/"></script>
 <!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script> -->
 <script
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initAutocomplete&libraries=places&v=weekly"
@@ -501,6 +489,7 @@ var site_url = '<?= SITE_URL ?>';
 var fee_checked = 0,
   gift_checked = 0;
 var fee = 0;
+var total_amount = 0;
 
 // let regionNames = new Intl.DisplayNames(['en'], {
 //   type: 'region'
@@ -527,9 +516,9 @@ let address2Field;
 let postalField;
 
 function initAutocomplete() {
-  address1Field = document.querySelector("#ship-address");
-  address2Field = document.querySelector("#address2");
-  postalField = document.querySelector("#postcode");
+  address1Field = document.querySelector("#address1");
+  address2Field = document.querySelector("#address_line21");
+  postalField = document.querySelector("#postal_code");
   // Create the autocomplete object, restricting the search predictions to
   // addresses in the US and Canada.
   autocomplete = new google.maps.places.Autocomplete(address1Field, {
@@ -539,7 +528,7 @@ function initAutocomplete() {
     fields: ["address_components", "geometry"],
     types: ["address"],
   });
-  address1Field.focus();
+  ////////////////////////////////////////////////// address1Field.focus();
   // When the user selects an address from the drop-down, populate the
   // address fields in the form.
   autocomplete.addListener("place_changed", fillInAddress);
@@ -558,7 +547,7 @@ function fillInAddress() {
   for (const component of place.address_components) {
     // @ts-ignore remove once typings fixed
     const componentType = component.types[0];
-
+    console.log(component);
     switch (componentType) {
       case "street_number": {
         address1 = `${component.long_name} ${address1}`;
@@ -580,7 +569,7 @@ function fillInAddress() {
         break;
       }
       case "locality":
-        document.querySelector("#locality").value = component.long_name;
+        document.querySelector("#location").value = component.long_name;
         break;
       case "administrative_area_level_1": {
         document.querySelector("#state").value = component.short_name;
@@ -600,7 +589,7 @@ function fillInAddress() {
   address2Field.focus();
 }
 
-window.initAutocomplete = initAutocomplete;
+//window.initAutocomplete = initAutocomplete;
 
 
 
@@ -633,18 +622,21 @@ $("#pre-donate").on('click', function() {
   $('#last_name').val("");
   $('#email').val("");
   $('#location').val("");
-  $('#first_name').focus();
   $("#donate_prev").hide();
   $("#donate_next").show();
-  $("#donate_submit").hide();
+  $("#payBtn").hide();
   $(".modal-section1").show();
   $(".modal-section2").hide();
-  var val = $("#pre-donate-input").val();
-  fee = Math.ceil((val * 0.029 + 0.003) * 100) / 100;
+  total_amount = $("#pre-donate-input").val();
+  fee = Math.ceil((total_amount * 0.029 + 0.003) * 100) / 100;
   $("#fee-content").html($("#fee-content").html().replace("###", "$" + fee));
   if (gift_checked == 1) $(".gift-part").show();
   else $(".gift-part").hide();
-  $("#total-amount").text("$" + val);
+
+  $("#kind").val(gift_checked);
+  $("#total-amount").text("$" + total_amount);
+  $("#amounts").val(total_amount);
+  $("#payBtn").html("Pay $" + total_amount);
 });
 //$(".form-line-inner").hide();
 var fee_show = false;
@@ -662,73 +654,15 @@ $("#item-fee").on('click', function() {
   fee_checked = 1 - fee_checked;
   $("#fee-amount").text("$" + fee * fee_checked);
   $("#total-amount").text("$" + ($("#pre-donate-input").val() * 1 + fee * fee_checked));
+  $("#amounts").val(total_amount * 1 + fee * fee_checked);
+  $("#payBtn").html("Pay $" + $("#amounts").val());
 });
 $("#gift-checked").on('click', function() {
   gift_checked = 1 - gift_checked;
   if (gift_checked == 1) $(".gift-part").show();
   else $(".gift-part").hide();
 });
-$("#donate_submit").on('click', function() {
-  if ($('#first_name').val() === "") {
-    alert("Input First name!");
-    $('#first_name').focus();
-    return;
-  }
-  if ($('#last_name').val() === "") {
-    alert("Input Last name!");
-    $('#last_name').focus();
-    return;
-  }
-  if (!isValidEmail($("#email").val())) {
-    alert("Input your Email!");
-    $('#email').focus();
-    return;
-  }
-  if ($('#address').val() === "") {
-    alert("Input Address!");
-    $('#address').focus();
-    return;
-  }
 
-  if ($('#city').val() === "") {
-    alert("Input City!");
-    $('#city').focus();
-    return;
-  }
-  if ($('#state').val() === "") {
-    alert("Input State!");
-    $('#state').focus();
-    return;
-  }
-  if ($('#postal').val() === "") {
-    alert("Input Postal!");
-    $('#postal').focus();
-    return;
-  }
-  if ($('#country').val() === "") {
-    alert("Input Country!");
-    $('#country').focus();
-    return;
-  }
-  if ($('#card_number').val() === "") {
-    alert("Input Card Number!");
-    $('#card_number').focus();
-    return;
-  }
-
-  // $("#paypal-form").submit();
-
-  // $.post(site_url + 'pages/add', {
-  // username: $('#first_name').val() + " " + $('#second_name').val(),
-  // business: $('#business').val(),
-  // location: $('#location').val(),
-  // amount: ($('#amount').html()).split("$")[0],
-  // }, function(data, statue, err) {
-  // var dt = data;
-  // alert(data['statue']);
-  // $("#paypal-form").submit();
-  // })
-});
 $(window).on("scroll touchmove", function() {
   $("#leaderboard-wrapper").toggleClass("tiny", $(document).scrollTop() > 60);
   $("#header").toggleClass("shrink", $(document).scrollTop() > 60);
@@ -751,7 +685,7 @@ $("#donate_next").on('click', function() {
   }
   $("#donate_prev").show();
   $("#donate_next").hide();
-  $("#donate_submit").show();
+  $("#payBtn").show();
   $(".modal-section1").hide();
   $(".modal-section2").show();
 });
@@ -759,14 +693,12 @@ $("#donate_next").on('click', function() {
 $("#donate_prev").on('click', function() {
   $("#donate_prev").hide();
   $("#donate_next").show();
-  $("#donate_submit").hide();
+  $("#payBtn").hide();
   $(".modal-section1").show();
   $(".modal-section2").hide();
 });
 
-
 var page = "<?= $statue ?>";
-console.log(page);
 if (page == "schools" || page == "businesses" || page == "faq" || page == "contact" || page ==
   "privacy_policy" ||
   page == "terms_of_use") {
@@ -809,8 +741,137 @@ function showSlides(n) {
   slides[slideIndex - 1].style.display = "block";
   dots[slideIndex - 1].className += " active";
 }
-</script>
 
+
+var stripe = Stripe('<?php echo $this->config->item('stripe_publishable_key'); ?>');
+
+// Create an instance of elements
+var elements = stripe.elements();
+
+var style = {
+  base: {
+    fontWeight: 400,
+    fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
+    fontSize: '16px',
+    lineHeight: '1.4',
+    color: '#555',
+    backgroundColor: '#fff',
+    '::placeholder': {
+      color: '#888',
+    },
+  },
+  invalid: {
+    color: '#eb1c26',
+  }
+};
+
+var cardElement = elements.create('cardNumber', {
+  style: style
+});
+cardElement.mount('#card_number');
+
+var exp = elements.create('cardExpiry', {
+  'style': style
+});
+exp.mount('#card_expiry');
+
+var cvc = elements.create('cardCvc', {
+  'style': style
+});
+cvc.mount('#card_cvc');
+
+// Validate input of the card elements
+var resultContainer = document.getElementById('paymentResponse');
+cardElement.addEventListener('change', function(event) {
+  if (event.error) {
+    resultContainer.innerHTML = '<p>' + event.error.message + '</p>';
+  } else {
+    resultContainer.innerHTML = '';
+  }
+});
+
+// Get payment form element
+var form = document.getElementById('paymentFrm');
+
+// Create a token when the form is submitted.
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  createToken();
+});
+
+// Create single-use token to charge the user
+function createToken() {
+  stripe.createToken(cardElement).then(function(result) {
+    if (result.error) {
+      // Inform the user if there was an error
+      resultContainer.innerHTML = '<p>' + result.error.message + '</p>';
+    } else {
+      // Send the token to your server
+      stripeTokenHandler(result.token);
+    }
+  });
+}
+
+// Callback to handle the response from stripe
+function stripeTokenHandler(token) {
+  // Insert the token ID into the form so it gets submitted to the server
+  if ($('#first_name').val() === "") {
+    alert("Input First name!");
+    $('#first_name').focus();
+    return;
+  }
+  if ($('#last_name').val() === "") {
+    alert("Input Last name!");
+    $('#last_name').focus();
+    return;
+  }
+  if (!isValidEmail($("#email").val())) {
+    alert("Input your Email!");
+    $('#email').focus();
+    return;
+  }
+  if ($('#address').val() === "") {
+    alert("Input Address!");
+    $('#address').focus();
+    return;
+  }
+
+  if ($('#city').val() === "") {
+    alert("Input City!");
+    $('#city').focus();
+    return;
+  }
+  if ($('#state').val() === "") {
+    alert("Input State!");
+    $('#state').focus();
+    return;
+  }
+  if ($('#postal_code').val() === "") {
+    alert("Input Postal!");
+    $('#postal_code').focus();
+    return;
+  }
+  if ($('#country').val() === "") {
+    alert("Input Country!");
+    $('#country').focus();
+    return;
+  }
+  // if ($('#card_number').val() === "") {
+  //   alert("Input Card Number!");
+  //   $('#card_number').focus();
+  //   return;
+  // }
+  $("#amounts").val(total_amount);
+  $("#kind").val(gift_checked);
+  var hiddenInput = document.createElement('input');
+  hiddenInput.setAttribute('type', 'hidden');
+  hiddenInput.setAttribute('name', 'stripeToken');
+  hiddenInput.setAttribute('value', token.id);
+  form.appendChild(hiddenInput);
+
+  form.submit();
+}
+</script>
 </body>
 
 </html>

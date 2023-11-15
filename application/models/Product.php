@@ -37,14 +37,15 @@ class Product extends CI_Model
    * Fetch order data from the database
    * @param id returns a single record
    */
-  public function getOrder($id)
+  public function getOrder()
   {
-    $this->db->select('r.*, p.name as product_name, p.price as product_price, p.currency as product_price_currency');
-    $this->db->from($this->ordTable . ' as r');
-    $this->db->join($this->proTable . ' as p', 'p.id = r.product_id', 'left');
-    $this->db->where('r.id', $id);
+    $this->db->select('*');
+    $this->db->from($this->ordTable);
+    $this->db->order_by('id', 'desc');
+    $this->db->limit(5);
     $query = $this->db->get();
-    return ($query->num_rows() > 0) ? $query->row_array() : false;
+    $result = $query->result_array();
+    return !empty($result) ? $result : false;
   }
 
   /*

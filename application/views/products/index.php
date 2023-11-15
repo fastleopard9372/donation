@@ -22,12 +22,12 @@
         <h5>Price: <?php echo '$' . $row['price'] . ' ' . $row['currency']; ?></h5>
       </div>
       <div class="action">
-        <a href="<?php echo base_url('products/purchase/' . $row['id']); ?>">Purchase</a>
+        <a href="<?= BASE_URL . 'index.php/products/purchase' . $row['id']; ?>">Purchase</a>
       </div>
     </div>
     <?php } } else { ?>
     <p>Product(s) not found...</p>
-
+    <a href="<?= BASE_URL . 'index.php/products/purchase'; ?>">Purchase</a>
     <?php } ?>
 </body>
 

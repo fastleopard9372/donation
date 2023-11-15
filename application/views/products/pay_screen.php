@@ -21,7 +21,7 @@
         <div class="card-errors"></div>
 
         <!-- Payment form -->
-        <form action="" method="POST" id="paymentFrm">
+        <form action="<?= BASE_URL . 'index.php/products/purchase'; ?>" method="POST" id="paymentFrm">
           <div class="form-group">
             <label>NAME</label>
             <input type="text" name="name" id="name" class="field" placeholder="Enter name" required="" autofocus="">
@@ -129,7 +129,7 @@
     function stripeTokenHandler(token) {
       // Insert the token ID into the form so it gets submitted to the server
       var hiddenInput = document.createElement('input');
-      hiddenInput.setAttribute('type', 'hidden');
+      hiddenInput.setAttribute('type', 'input');
       hiddenInput.setAttribute('name', 'stripeToken');
       hiddenInput.setAttribute('value', token.id);
       form.appendChild(hiddenInput);

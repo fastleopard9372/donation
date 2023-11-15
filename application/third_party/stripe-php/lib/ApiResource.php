@@ -75,8 +75,8 @@ abstract class ApiResource extends StripeObject
     {
         if ($id === null) {
             $class = get_called_class();
-            $message = "Could not determine which URL to request: "
-               . "$class instance has invalid ID: $id";
+            $message = 'Could not determine which URL to request: '
+                . "$class instance has invalid ID: $id";
             throw new Error\InvalidRequest($message, null);
         }
         $id = Util\Util::utf8($id);
@@ -96,10 +96,10 @@ abstract class ApiResource extends StripeObject
     protected static function _validateParams($params = null)
     {
         if ($params && !is_array($params)) {
-            $message = "You must pass an array as the first argument to Stripe API "
-               . "method calls.  (HINT: an example call to create a charge "
-               . "would be: \"Stripe\\Charge::create(array('amount' => 100, "
-               . "'currency' => 'usd', 'source' => 'tok_1234'))\")";
+            $message = 'You must pass an array as the first argument to Stripe API '
+                . 'method calls.  (HINT: an example call to create a charge '
+                . "would be: \"Stripe\Charge::create(array('amount' => 100, "
+                . "'currency' => 'usd', 'source' => 'tok_1234'))\")";
             throw new Error\Api($message);
         }
     }
@@ -117,11 +117,13 @@ abstract class ApiResource extends StripeObject
         $opts = Util\RequestOptions::parse($options);
         $requestor = new ApiRequestor($opts->apiKey, static::baseUrl());
         list($response, $opts->apiKey) = $requestor->request($method, $url, $params, $opts->headers);
+
         foreach ($opts->headers as $k => $v) {
             if (!array_key_exists($k, self::$HEADERS_TO_PERSIST)) {
                 unset($opts->headers[$k]);
             }
         }
+
         return array($response, $opts);
     }
 
@@ -140,9 +142,9 @@ abstract class ApiResource extends StripeObject
 
         list($response, $opts) = static::_staticRequest('get', $url, $params, $options);
         $obj = Util\Util::convertToStripeObject($response->json, $opts);
-        if (!is_a($obj, 'Stripe\\Collection')) {
+        if (!is_a($obj, 'Stripe\Collection')) {
             $class = get_class($obj);
-            $message = "Expected type \"Stripe\\Collection\", got \"$class\" instead";
+            $message = "Expected type \"Stripe\Collection\", got \"$class\" instead";
             throw new Error\Api($message);
         }
         $obj->setLastResponse($response);

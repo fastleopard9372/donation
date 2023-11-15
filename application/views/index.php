@@ -237,83 +237,86 @@
                                         </thead>
                                         <tbody>
                                           <?php
-                                            $flag = 'odd';
-                                            $i = 1;
-                                            foreach ($donate as $row) {
-                                              $str = explode(' ', $row['username'] . ' M');
+                                            if (isset($donate)) {
+                                              $flag = 'odd';
+                                              $i = 1;
+                                              foreach ($donate as $row) {
+                                                $str = explode(' ', $row['name'] . ' M');
 
-                                              $location_array = explode(',', str_replace(' ', '', $row['location']) . ',Alabama');
-                                              $city = explode(',', $row['location'])[0];
-                                              $state = $location_array[1];
+                                                // $location_array = explode(',', str_replace(' ', '', $row['location']) . ',Alabama');
 
-                                              // Define an array of state abbreviations
-                                              $stateAbbreviations = array(
-                                                'Alabama' => 'AL',
-                                                'Alaska' => 'AK',
-                                                'Arizona' => 'AZ',
-                                                'Arkansas' => 'AR',
-                                                'California' => 'CA',
-                                                'Colorado' => 'CO',
-                                                'Connecticut' => 'CT',
-                                                'Delaware' => 'DE',
-                                                'Florida' => 'FL',
-                                                'Georgia' => 'GA',
-                                                'Hawaii' => 'HI',
-                                                'Idaho' => 'ID',
-                                                'Illinois' => 'IL',
-                                                'Indiana' => 'IN',
-                                                'Iowa' => 'IA',
-                                                'Kansas' => 'KS',
-                                                'Kentucky' => 'KY',
-                                                'Louisiana' => 'LA',
-                                                'Maine' => 'ME',
-                                                'Maryland' => 'MD',
-                                                'Massachusetts' => 'MA',
-                                                'Michigan' => 'MI',
-                                                'Minnesota' => 'MN',
-                                                'Mississippi' => 'MS',
-                                                'Missouri' => 'MO',
-                                                'Montana' => 'MT',
-                                                'Nebraska' => 'NE',
-                                                'Nevada' => 'NV',
-                                                'New Hampshire' => 'NH',
-                                                'New Jersey' => 'NJ',
-                                                'New Mexico' => 'NM',
-                                                'New York' => 'NY',
-                                                'North Carolina' => 'NC',
-                                                'North Dakota' => 'ND',
-                                                'Ohio' => 'OH',
-                                                'Oklahoma' => 'OK',
-                                                'Oregon' => 'OR',
-                                                'Pennsylvania' => 'PA',
-                                                'Rhode Island' => 'RI',
-                                                'South Carolina' => 'SC',
-                                                'South Dakota' => 'SD',
-                                                'Tennessee' => 'TN',
-                                                'Texas' => 'TX',
-                                                'Utah' => 'UT',
-                                                'Vermont' => 'VT',
-                                                'Virginia' => 'VA',
-                                                'Washington' => 'WA',
-                                                'West Virginia' => 'WV',
-                                                'Wisconsin' => 'WI',
-                                                'Wyoming' => 'WY'
-                                              );
+                                                $city = $row['city'];  // explode(',', $row['location'])[0];
+                                                $state = $row['state'];  // $location_array[1];
+                                                if ($state == '')
+                                                  $state = 'Alabama';
+                                                // Define an array of state abbreviations
+                                                $stateAbbreviations = array(
+                                                  'Alabama' => 'AL',
+                                                  'Alaska' => 'AK',
+                                                  'Arizona' => 'AZ',
+                                                  'Arkansas' => 'AR',
+                                                  'California' => 'CA',
+                                                  'Colorado' => 'CO',
+                                                  'Connecticut' => 'CT',
+                                                  'Delaware' => 'DE',
+                                                  'Florida' => 'FL',
+                                                  'Georgia' => 'GA',
+                                                  'Hawaii' => 'HI',
+                                                  'Idaho' => 'ID',
+                                                  'Illinois' => 'IL',
+                                                  'Indiana' => 'IN',
+                                                  'Iowa' => 'IA',
+                                                  'Kansas' => 'KS',
+                                                  'Kentucky' => 'KY',
+                                                  'Louisiana' => 'LA',
+                                                  'Maine' => 'ME',
+                                                  'Maryland' => 'MD',
+                                                  'Massachusetts' => 'MA',
+                                                  'Michigan' => 'MI',
+                                                  'Minnesota' => 'MN',
+                                                  'Mississippi' => 'MS',
+                                                  'Missouri' => 'MO',
+                                                  'Montana' => 'MT',
+                                                  'Nebraska' => 'NE',
+                                                  'Nevada' => 'NV',
+                                                  'New Hampshire' => 'NH',
+                                                  'New Jersey' => 'NJ',
+                                                  'New Mexico' => 'NM',
+                                                  'New York' => 'NY',
+                                                  'North Carolina' => 'NC',
+                                                  'North Dakota' => 'ND',
+                                                  'Ohio' => 'OH',
+                                                  'Oklahoma' => 'OK',
+                                                  'Oregon' => 'OR',
+                                                  'Pennsylvania' => 'PA',
+                                                  'Rhode Island' => 'RI',
+                                                  'South Carolina' => 'SC',
+                                                  'South Dakota' => 'SD',
+                                                  'Tennessee' => 'TN',
+                                                  'Texas' => 'TX',
+                                                  'Utah' => 'UT',
+                                                  'Vermont' => 'VT',
+                                                  'Virginia' => 'VA',
+                                                  'Washington' => 'WA',
+                                                  'West Virginia' => 'WV',
+                                                  'Wisconsin' => 'WI',
+                                                  'Wyoming' => 'WY'
+                                                );
 
-                                              // Get the abbreviation for the state
-                                              $stateAbbreviation = '';
+                                                // Get the abbreviation for the state
+                                                $stateAbbreviation = '';
 
-                                              // Convert the state name to lowercase and search for the abbreviation
-                                              $state = strtolower($state);
-                                              foreach ($stateAbbreviations as $stateName => $abbreviation) {
-                                                if (strtolower($stateName) === $state) {
-                                                  $state = $abbreviation;
-                                                  break;
+                                                // Convert the state name to lowercase and search for the abbreviation
+                                                $state = strtolower($state);
+                                                foreach ($stateAbbreviations as $stateName => $abbreviation) {
+                                                  if (strtolower($stateName) === $state) {
+                                                    $state = $abbreviation;
+                                                    break;
+                                                  }
                                                 }
-                                              }
 
-                                              // Format the location string
-                                              $location = $city . ', ' . $state;
+                                                // Format the location string
+                                                $location = $city . ', ' . $state;
                                           ?>
                                           <tr class="<?= $flag ?>">
                                             <td>
@@ -328,13 +331,14 @@
                                             <td style="text-align:center;">
                                               <?= $location ?></td>
                                             <td style="text-align:center;">
-                                              $<?= $row['amount'] ?></td>
+                                              $<?= $row['paid_amount'] ?></td>
                                           </tr>
                                           <?php
-                                              if ($flag == 'odd')
-                                                $flag = 'even';
-                                              else
-                                                $flag = 'odd';
+                                                if ($flag == 'odd')
+                                                  $flag = 'even';
+                                                else
+                                                  $flag = 'odd';
+                                              }
                                             }
                                                                                       ?>
                                         </tbody>
