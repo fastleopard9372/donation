@@ -22,7 +22,7 @@ class Products extends CI_Controller
 		$data['donate'] = $this->product->getDonate();
 		$data['count'] = $this->product->getCount();
 		$data['total'] = $this->product->getTotal();
-		// $this->load->view('home', $data);
+		// $this->load->view('home' , $data);
 		//	$this->load->view('products/index', $data);
 		$this->load_view($data);
 	}
