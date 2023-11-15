@@ -113,25 +113,43 @@ class Products extends CI_Controller
             $orderID = $this->product->insertOrder($orderData);
 
             // If the order is successful
+            $config = Array(
+              'protocol' => 'smtp',
+              'smtp_host' => 'sandbox.smtp.mailtrap.io',
+              'smtp_port' => 2525,
+              'smtp_user' => '080db23fdd1c4d',
+              'smtp_pass' => '********7dec',
+              'mailtype' => 'html',
+              'charset' => 'utf-8',
+              'smtp_timeout' => '4',  // in seconds
+              'crlf' => "\r\n"
+              // 'newline' => "\r\n"
+            );
+            // Email content
+            $htmlContent = '<h1>Sending email via SMTP server</h1>';
+            $htmlContent .= '<p>This email has sent via SMTP server from CodeIgniter application.</p>';
+            $this->email->message($htmlContent);
+
             if ($payment_status == 'succeeded') {
               if ($kind == 0) {
-                // $this->email->from('booktopia@bookgroup.com', 'Identification');
-                // $this->email->to($email);
-                // $this->email->subject('New Message has just arrived to you.');
-                // $this->email->message('You have donated to BookTopia bookgroup.');
-                // $this->email->send();
+                // booktopia@bookgroup.com'
+                $this->email->from('jacobux30@gmail.com', 'Identification');
+                $this->email->to($email);
+                $this->email->subject('New Message has just arrived to you.');
+                $this->email->message('You have donated to BookTopia bookgroup.');
+                $this->email->send();
               } else {
-                // $this->email->from('booktopia@bookgroup.com', 'Identification');
-                // $this->email->to($email);
-                // $this->email->subject('New Message has just arrived to you.');
-                // $this->email->message('You have gave $' . $paidAmount . 'to ' . $gift_email);
-                // $this->email->send();
+                $this->email->from('jacobux30@gmail.com', 'Identification');
+                $this->email->to($email);
+                $this->email->subject('New Message has just arrived to you.');
+                $this->email->message('You have gave $' . $paidAmount . 'to ' . $gift_email);
+                $this->email->send();
 
-                // $this->email->from($email, 'Identification');
-                // $this->email->to($gift_email);
-                // $this->email->subject('New Message has just arrived to you.');
-                // $this->email->message('You have received $' . $paidAmount . 'to ' . $email);
-                // $this->email->send();
+                $this->email->from($email, 'Identification');
+                $this->email->to($gift_email);
+                $this->email->subject('New Message has just arrived to you.');
+                $this->email->message('You have received $' . $paidAmount . 'to ' . $email);
+                $this->email->send();
               }
 
               return $orderID;

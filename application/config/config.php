@@ -521,3 +521,13 @@ $config['rewrite_short_tags'] = FALSE;
  * | Array:array('10.0.1.200', '192.168.5.0/24')
  */
 $config['proxy_ips'] = '';
+
+// $config = Array(
+//   'protocol' => 'smtp',
+//   'smtp_host' => 'sandbox.smtp.mailtrap.io',
+//   'smtp_port' => 2525,
+//   'smtp_user' => '080db23fdd1c4d',
+//   'smtp_pass' => '********7dec',
+//   'crlf' => "\r\n",
+//   'newline' => "\r\n"
+// );
