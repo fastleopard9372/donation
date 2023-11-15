@@ -26,7 +26,7 @@
       </div>
     </div>
     <?php } } else { ?>
-    <p>Product(s) not found...</p>
+    <p>Product(s) not found... </p>
     <a href="<?= BASE_URL . 'index.php/products/purchase'; ?>">Purchase</a>
     <?php } ?>
 </body>
