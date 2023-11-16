@@ -33,7 +33,9 @@
                             <div class="col-6">
                               <div class="title-response" style="padding: 170px 30px 30px 30px; margin-bottom: 20px">
                                 <div class="views-field">
-                                  <div class="field-content">Booktopia</div>
+                                  <div class="field-content"
+                                    style="color:#003595; font-size:30px;margin-bottom:20px;font-weight:700;font-family:'zilla slab' !important;">
+                                    Booktopia</div>
                                 </div>
                                 <div class="views-field views-field-field-subtitle">
                                   <div class="field-content">Where Every Child's Story

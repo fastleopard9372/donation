@@ -630,9 +630,12 @@ $("#pre-donate").on('click', function() {
   total_amount = $("#pre-donate-input").val();
   fee = Math.ceil((total_amount * 0.029 + 0.003) * 100) / 100;
   $("#fee-content").html($("#fee-content").html().replace("###", "$" + fee));
+  if ($('#item-fee').is(":checked")) {
+    fee_checked = 1;
+  } else fee_checked = 0;
+  total_amount * 1 + fee * fee_checked;
   if (gift_checked == 1) $(".gift-part").show();
   else $(".gift-part").hide();
-
   $("#kind").val(gift_checked);
   $("#total-amount").text("$" + total_amount);
   $("#amounts").val(total_amount);
