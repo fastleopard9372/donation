@@ -209,13 +209,13 @@ async
         <p id="user-footer" class="fl"></p>
       </div>
       <p id="contact" style="display:flex;justify-content:center;width:100%;">
-        <a href="<?= SITE_URL ?>products/contact">Contact Us</a>
+        <a href="<?= SITE_URL ?>contact">Contact Us</a>
       </p>
       <div id="footer-bottom">
         <p>
           <a href="<?= SITE_URL ?>products">Home</a> • <a href="<?= SITE_URL ?>products/privacy_policy">Privacy
-            Policy</a> • <a href="<?= SITE_URL ?>products/terms_of_use">Terms of Use •<a
-              href="<?= SITE_URL ?>products/contact"> Contact Us</a>
+            Policy</a> • <a href="<?= SITE_URL ?>products/terms_of_use">Terms of Use •<a href="<?= SITE_URL ?>contact">
+              Contact Us</a>
         </p>
         <p>
 

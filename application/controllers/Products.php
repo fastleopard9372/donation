@@ -8,6 +8,7 @@ class Products extends CI_Controller
   {
     parent::__construct();
 
+    $this->load->library('form_validation');
     // Load Stripe library
     $this->load->library('stripe_lib');
 
