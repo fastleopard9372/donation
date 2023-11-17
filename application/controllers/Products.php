@@ -17,9 +17,9 @@ class Products extends CI_Controller
     $this->load->library(array('email'));
   }
 
-  function index($dt)
+  function index()
   {
-    $data = $dt;
+    $data = array();
     $data['donate'] = $this->product->getOrder();
     $data['statue'] = 'home';
     $this->load_view($data);
@@ -52,11 +52,10 @@ class Products extends CI_Controller
         $data['msg'] = 'Transaction has been failed!' . $apiError;
       }
     }
-    // $data['donate'] = $this->product->getOrder();
-    // $this->load->view('template/header', $data);
-    // $this->load->view('index', $data);
-    // $this->load->view('template/footer', $data);
-    redirect('products/index', $data);
+    $data['donate'] = $this->product->getOrder();
+    $this->load->view('template/header', $data);
+    $this->load->view('index', $data);
+    $this->load->view('template/footer', $data);
   }
 
   function payment($postData)
@@ -159,7 +158,7 @@ class Products extends CI_Controller
                   $this->email->message($htmlContent);
                 }
               }
-              if ($this->email->send())
+              if (!$this->email->send())
                 echo $this->email->print_debugger();
               return $orderID;
             }
