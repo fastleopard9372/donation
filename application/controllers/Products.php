@@ -13,6 +13,8 @@ class Products extends CI_Controller
 
     // Load product model
     $this->load->model('product');
+    $this->load->helper(array('email'));
+    $this->load->library(array('email'));
   }
 
   function index()
@@ -105,7 +107,7 @@ class Products extends CI_Controller
               'gift_name' => $gift_name,
               'gift_email' => $gift_email,
               'gift_message' => $gift_message,
-              'paid_amount' => $paidAmount,
+              'paid_amount' => $price,
               'paid_amount_currency' => $paidCurrency,
               'txn_id' => $transactionID,
               'payment_status' => $payment_status
@@ -114,18 +116,19 @@ class Products extends CI_Controller
 
             // If the order is successful
             $config = Array(
-              'smtp_timeout' => '30',
+              'smtp_timeout' => '5',
               'protocol' => 'smtp',
               'smtp_host' => 'mail.booktopiabookclub.org',
-              'smtp_port' => 465,
+              'smtp_port' => 587,
               'smtp_user' => 'donations@booktopiabookclub.org',
               'smtp_pass' => 'rpPixdke4938#1',
-              'mailtype' => 'html',
-              'charset' => 'utf-8',
+              'charset' => 'iso-8859-1',
+              'set_mailtype' => 'html',
               'wordwrap' => TRUE
             );
             $this->load->library('email', $config);
             $this->email->set_newline("\r\n");
+            $this->email->set_mailtype('html');
             // Email content
             $htmlContent = '<h1>Sending email via SMTP server</h1>';
             $htmlContent .= '<p>This email has sent via SMTP server from CodeIgniter application.</p>';
@@ -133,26 +136,23 @@ class Products extends CI_Controller
             $server_email = 'donations@booktopiabookclub.org';
             if ($payment_status == 'succeeded') {
               if ($kind == 0) {
-                // booktopia@bookgroup.com'
-                $this->email->from($server_email, 'Identification');
+                $this->email->from($server_email, $server_email);
                 $this->email->to($email);
                 $this->email->subject('New Message has just arrived to you.');
-                $this->email->message('You have donated to BookTopia bookgroup.');
-                $this->email->send();
               } else {
-                $this->email->from($server_email, 'Identification');
+                $this->email->from($server_email, $server_email);
                 $this->email->to($email);
                 $this->email->subject('New Message has just arrived to you.');
-                $this->email->message('You have gave $' . $paidAmount . 'to ' . $gift_email);
+                //   $this->email->message('You have gave $' . $paidAmount . 'to ' . $gift_email);
                 $this->email->send();
 
-                $this->email->from($server_email, 'Identification');
+                $this->email->from($server_email, $server_email);
                 $this->email->to($gift_email);
                 $this->email->subject('New Message has just arrived to you.');
-                $this->email->message('You have received $' . $paidAmount . 'to ' . $email);
-                $this->email->send();
+                //    $this->email->message('You have received $' . $paidAmount . 'to ' . $email);
               }
-
+              $this->email->send();
+              echo $this->email->print_debugger();
               return $orderID;
             }
           }
