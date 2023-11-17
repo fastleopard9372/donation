@@ -17,9 +17,9 @@ class Products extends CI_Controller
     $this->load->library(array('email'));
   }
 
-  function index()
+  function index($dt)
   {
-    $data = array();
+    $data = $dt;
     $data['donate'] = $this->product->getOrder();
     $data['statue'] = 'home';
     $this->load_view($data);
@@ -52,10 +52,11 @@ class Products extends CI_Controller
         $data['msg'] = 'Transaction has been failed!' . $apiError;
       }
     }
-    $data['donate'] = $this->product->getOrder();
-    $this->load->view('template/header', $data);
-    $this->load->view('index', $data);
-    $this->load->view('template/footer', $data);
+    // $data['donate'] = $this->product->getOrder();
+    // $this->load->view('template/header', $data);
+    // $this->load->view('index', $data);
+    // $this->load->view('template/footer', $data);
+    redirect('products/index', $data);
   }
 
   function payment($postData)
@@ -124,7 +125,7 @@ class Products extends CI_Controller
                 $this->email->from($server_email, $server_email);
                 $this->email->to($email);
                 $this->email->subject('Thank you for your generous donation to Booktopia!');
-                $htmlContent = '<div><br><h4>Dear ' . $name . '.</h4><br><br>We are so grateful for your donation to Booktopia.';
+                $htmlContent = '<div><br><h3>Dear ' . $name . '.</h3><br><br>We are so grateful for your donation to Booktopia.';
                 $htmlContent .= ' Your generosity will help us to fulfill our mission of promoting literacy and education by providing books to elementary school&nbsp;children.';
                 $htmlContent .= '<br><br>With your donation we will be able to purchase and distribute more books, as well as organize reading programs and provide reading rewards that motivate students to read. You are helping make a difference in the lives of children by giving them the gift of reading.';
                 $htmlContent .= '<br><br>Thank you again for your kindness and generosity.&nbsp;</div>';
@@ -134,7 +135,7 @@ class Products extends CI_Controller
                 $this->email->from($server_email, $server_email);
                 $this->email->to($email);
                 $this->email->subject('A generous donation was just made to Booktopia in ' . $gift_email);
-                $htmlContent = '<div><br><h4>Dear ' . $name . '.</h4><br><br>We are so grateful for your donation to Booktopia.';
+                $htmlContent = '<div><br><h3>Dear ' . $name . '.</h3><br><br>We are so grateful for your donation to Booktopia.';
                 $htmlContent .= ' Your generosity will help us to fulfill our mission of promoting literacy and education by providing books to elementary school&nbsp;children.';
                 $htmlContent .= '<br><br>With your donation we will be able to purchase and distribute more books, as well as organize reading programs and provide reading rewards that motivate students to read. You are helping make a difference in the lives of children by giving them the gift of reading.';
                 $htmlContent .= '<br><br>Thank you again for your kindness and generosity.&nbsp;</div>';
@@ -145,7 +146,7 @@ class Products extends CI_Controller
                   $this->email->to($gift_email);
                   $this->email->subject('A generous donation was just made to Booktopia in your name!');
                   $htmlContent = '<h1>Boooktopia Bookgroup</h1>';
-                  $htmlContent .= '<div><br><h4>Dear ' . $gift_name . '.</h4><br><br>';
+                  $htmlContent .= '<div><br><h3>Dear ' . $gift_name . '.</h3><br><br>';
                   $htmlContent .= 'We are so grateful to have received a donation to Booktopia in your name by ' . $email . '.';
                   $htmlContent .= 'This gift will help us to fulfill our mission of promoting literacy and education by providing books to elementary school&nbsp;children.';
                   $htmlContent .= '<br><br>With this donation we will be able to purchase and distribute more books, as well as organize reading programs and provide reading rewards that motivate students to read.';
