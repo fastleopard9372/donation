@@ -630,6 +630,9 @@ $("#pre-donate").on('click', function() {
   total_amount = $("#pre-donate-input").val();
   fee = Math.ceil((total_amount * 0.029 + 0.003) * 100) / 100;
   $("#fee-content").html($("#fee-content").html().replace("###", "$" + fee));
+  $('#item-fee').attr('checked', false);
+  $('#gift-checked').attr('checked', false);
+  $("#fee-amount").text("$0");
   if ($('#item-fee').is(":checked")) {
     fee_checked = 1;
   } else fee_checked = 0;
@@ -709,6 +712,14 @@ if (page == "schools" || page == "businesses" || page == "faq" || page == "conta
 } else {
   $(".sponsor").removeClass('sponsor-hide');
 }
+if (page == "contact") {
+  $("#contact").addClass('sponsor-hide');
+} else {
+  $("#contact").removeClass('sponsor-hide');
+}
+
+contact
+
 let slideIndex = 1;
 showSlides(slideIndex);
 
