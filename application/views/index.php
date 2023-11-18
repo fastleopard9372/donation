@@ -374,9 +374,9 @@
                                       <div class="form-container" style="padding-top:5px;">
                                         <div class="form-item form-type-textfield form-item-search-block-form "
                                           style="position:relative;">
-                                          <p style="position:absolute;right:5px;padding-top:8px">$</p>
-                                          <input type="text" name="name" id="pre-donate-input" value="0"
-                                            placeholder="50" class="form-text form-input " />
+                                          <!-- <p style="position:absolute;right:5px;padding-top:8px">$</p> -->
+                                          <input type="text" name="name" id="pre-donate-input" placeholder="$50"
+                                            class="form-text form-input" style="text-align:center !important;" />
                                         </div>
                                         <div class="form-actions form-wrapper full-width">
                                           <button type="button" id="pre-donate">Donate</button>

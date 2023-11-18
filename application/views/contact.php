@@ -59,8 +59,8 @@
                                   <?php echo form_error('subject', '<p class="field-error">', '</p>'); ?>
                                 </div>
                                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                                  <textarea name="message" id="message" rows='10' placeholder="message"
-                                    style="width:100%;"><?php echo !empty($postData['message']) ? $postData['message'] : ''; ?></textarea>
+                                  <textarea name="message" id="message" rows='10' placeholder="Message"
+                                    style="width:100%;resize: none;"><?php echo !empty($postData['message']) ? $postData['message'] : ''; ?></textarea>
                                   <?php echo form_error('message', '<p class="field-error">', '</p>'); ?>
                                 </div>
                               </div>
