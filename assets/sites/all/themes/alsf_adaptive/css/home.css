@@ -13,7 +13,7 @@ body.front {
     border: none !important;
     color: #fff;
     font-family: zilla slab, serif;
-    font-size: 15px !important;
+    font-size: 13px !important;
     font-weight: 700;
     padding: 5px 0px;
     text-transform: uppercase;
@@ -25,16 +25,16 @@ body.front {
   .front table tbody tr td:nth-child(2),
   .front table tbody tr td:nth-child(3) {
     color: #2b2d32;
-    font-size: 15px !important;
+    font-size: 13px !important;
     font-weight: 700;
     padding: 0px !important;
   }
   .leader-rank {
-    font-size: 15px !important;
+    font-size: 13px !important;
     margin-right: 0px !important;
   }
   .leader-name > a {
-    font-size: 15px !important;
+    font-size: 13px !important;
     text-align: center;
   }
   .thead-part {
