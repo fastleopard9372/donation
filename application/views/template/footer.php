@@ -304,7 +304,7 @@ async
                   <!-- <div class="views-field form-text">Message to Recipient</div> -->
                   <div class="form-item my-text  form-type-textfield form-item-search-block-form">
                     <Textarea name="gift_message" id="gift_message" placeholder="Message to Recipient"
-                      class="form-text form-input"></Textarea>
+                      class="form-text form-input" style="resize:none !important;"></Textarea>
                   </div>
                 </div>
               </div>
@@ -489,7 +489,7 @@ window.onclick = function(event) {
 <script type="text/javascript">
 var $ = jQuery.noConflict();
 var site_url = '<?= SITE_URL ?>';
-var fee_checked = 0,
+var fee_checked = 1,
   gift_checked = 0;
 var fee = 0;
 var total_amount = 0;
@@ -615,7 +615,7 @@ $(".donate_btn").on('click', function() {
   } else clicked = true;
   box = $(this).attr("id");
   if (clicked)
-    $("#pre-donate-input").val($(this).attr('amount'));
+    $("#pre-donate-input").val("$" + $(this).attr('amount'));
   else
     $("#pre-donate-input").val("");
 });
@@ -627,8 +627,7 @@ $("#pre-donate").on('click', function() {
     return;
   }
   modal.style.display = "block";
-  $('#amount').text("$" + $("#pre-donate-input").val());
-
+  $('#amount').text($("#pre-donate-input").val());
   $('#first_name').val("");
   $('#last_name').val("");
   $('#email').val("");
@@ -638,23 +637,26 @@ $("#pre-donate").on('click', function() {
   $("#payBtn").hide();
   $(".modal-section1").show();
   $(".modal-section2").hide();
-  total_amount = $("#pre-donate-input").val();
+  total_amount = $("#pre-donate-input").val().replace("$", "") * 1;
+  var fee1;
   fee = Math.floor((total_amount * 0.029 + 0.30) * 100 + 0.5) / 100;
+  fee1 = fee;
   if (fee < 1) fee = fee.toString().replace("0.", ".");
-  $("#fee-content").html("Please add $" + fee + " to cover processing  associated with my donation.");
-  $('#item-fee').attr('checked', false);
+  $("#fee-content").html("Please add $" + fee.toFixed(2) + " to cover processing  associated with my donation.");
+  $('#item-fee').attr('checked', true);
   $('#gift-checked').attr('checked', false);
-  $("#fee-amount").text("$0");
+
   if ($('#item-fee').is(":checked")) {
     fee_checked = 1;
   } else fee_checked = 0;
-  total_amount * 1 + fee * fee_checked;
+  total_amount = total_amount * 1 + fee * fee_checked;
   if (gift_checked == 1) $(".gift-part").show();
   else $(".gift-part").hide();
+  $("#fee-amount").text("$" + fee1.toFixed(2));
   $("#kind").val(gift_checked);
-  $("#total-amount").text("$" + total_amount);
+  $("#total-amount").text("$" + total_amount.toFixed(2));
   $("#amounts").val(total_amount);
-  $("#payBtn").html("Pay $" + total_amount);
+  $("#payBtn").html("Pay $" + total_amount.toFixed(2));
 });
 //$(".form-line-inner").hide();
 var fee_show = false;
@@ -670,10 +672,10 @@ $(".fee-edit").click(function() {
 });
 $("#item-fee").on('click', function() {
   fee_checked = 1 - fee_checked;
-  $("#fee-amount").text("$" + fee * fee_checked);
-  $("#total-amount").text("$" + ($("#pre-donate-input").val() * 1 + fee * fee_checked));
-  $("#amounts").val(total_amount * 1 + fee * fee_checked);
-  $("#payBtn").html("Pay $" + $("#amounts").val());
+  $("#fee-amount").text("$" + (fee * fee_checked).toFixed(2));
+  $("#total-amount").text("$" + ($("#pre-donate-input").val().replace("$", "") * 1 + fee * fee_checked).toFixed(2));
+  $("#amounts").val((total_amount * 1 + fee * fee_checked).toFixed(2));
+  $("#payBtn").html("Pay $" + $("#amounts").val().toFixed(2));
 });
 $("#gift-checked").on('click', function() {
   gift_checked = 1 - gift_checked;
