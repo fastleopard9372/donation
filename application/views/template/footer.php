@@ -243,6 +243,9 @@ async
       <div class="form-line modal-img">
         <img src="<?= ASSETS_URL ?>sites/default/files/logo_tr1.png" alt="logo" />
       </div>
+      <div class="" style="position: absolute;width: 35px;left: 7px;top: 12px;">
+        <img id="donate_prev" src="<?= ASSETS_URL ?>images/prev.png" />
+      </div>
       <div class="btn-close close">
         <img src="<?= ASSETS_URL ?>images/close.svg" />
       </div>
@@ -402,7 +405,7 @@ async
             <input type="hidden" id="kind" name="kind" value="0" />
             <div class="form-actions my-text form-wrapper" id="edit-actions">
               <button type="button" id="donate_next">Next</button>
-              <button type="button" id="donate_prev">prev</button>
+              <!-- <button type="button" id="donate_prev">prev</button> -->
               <button type="submit" id="payBtn">Donate</button>
             </div>
           </div>

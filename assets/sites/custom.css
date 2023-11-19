@@ -23,9 +23,7 @@ button {
 .full-width button:hover {
   background-color: #679ef0 !important;
 }
-#payBtn {
-  background-color: #facc00 !important;
-}
+
 /* For desktop: */
 .col-1 {
   width: 8.33%;
