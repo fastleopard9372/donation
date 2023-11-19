@@ -283,22 +283,24 @@ async
               </div>
               <div class="gift-part form-container">
                 <div class="form-line">
-                  <div class="views-field form-text">Name</div>
+                  <!-- <div class="views-field form-text">Recipients Name</div> -->
                   <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                    <input type="text" name="gift_name" id="gift_name" placeholder="" class="form-text form-input" />
+                    <input type="text" name="gift_name" id="gift_name" placeholder="Recipients Name"
+                      class="form-text form-input" />
                   </div>
                 </div>
 
                 <div class="form-line">
-                  <div class="views-field form-text">Email</div>
+                  <!-- <div class="views-field form-text">Recipients Email</div> -->
                   <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                    <input type="email" name="gift_email" id="gift_email" placeholder="" class="form-text form-input" />
+                    <input type="email" name="gift_email" id="gift_email" placeholder="Recipients Email"
+                      class="form-text form-input" />
                   </div>
                 </div>
                 <div class="form-line">
-                  <div class="views-field form-text">Message</div>
+                  <!-- <div class="views-field form-text">Message to Recipient</div> -->
                   <div class="form-item my-text  form-type-textfield form-item-search-block-form">
-                    <Textarea name="gift_message" id="gift_message" placeholder=""
+                    <Textarea name="gift_message" id="gift_message" placeholder="Message to Recipient"
                       class="form-text form-input"></Textarea>
                   </div>
                 </div>
