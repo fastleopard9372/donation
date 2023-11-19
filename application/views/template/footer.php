@@ -268,9 +268,7 @@ async
                 <div class="views-field form-text item-title">
                   <input type="checkbox" class="view-field form-text " id="item-fee"></input>
                 </div>
-                <div class="views-field form-text item-content " id="fee-content">Please add ### to cover processing
-                  fees
-                  associated with my donation.</div>
+                <div class="views-field form-text item-content " id="fee-content"></div>
               </div>
               <div class="form-line total">
                 <div class="views-field form-text item-title">Total Donation Amount</div>
@@ -280,9 +278,7 @@ async
               <div class='gift-section'>
                 <input type="checkbox" id="gift-checked"></input>
                 <div class="views-field form-text item-content">
-                  Would you like to make this
-                  donation a holiday gift for
-                  someone?
+                  Would you like to make this donation a gift for someone?
                 </div>
               </div>
               <div class="gift-part form-container">
@@ -393,7 +389,7 @@ async
                 </div>
                 <div class="form-line">
                   <div class="form-group">
-                    <div class="views-field form-text">Cvc Code</div>
+                    <div class="views-field form-text">CVC Code</div>
                     <div id="card_cvc" class="form-field" style="width:100px;"></div>
                   </div>
                 </div>
@@ -605,8 +601,12 @@ $("#more-show").on('click', function() {
     $("#more-show-text").addClass('detail-show');
 });
 var clicked = false;
+var box = "1";
 $(".donate_btn").on('click', function() {
-  clicked = !clicked;
+  if (box == $(this).attr("id")) {
+    clicked = !clicked;
+  } else clicked = true;
+  box = $(this).attr("id");
   if (clicked)
     $("#pre-donate-input").val($(this).attr('amount'));
   else
@@ -632,8 +632,9 @@ $("#pre-donate").on('click', function() {
   $(".modal-section1").show();
   $(".modal-section2").hide();
   total_amount = $("#pre-donate-input").val();
-  fee = Math.ceil((total_amount * 0.029 + 0.003) * 100) / 100;
-  $("#fee-content").html($("#fee-content").html().replace("###", "$" + fee));
+  fee = Math.floor((total_amount * 0.029 + 0.30) * 100 + 0.5) / 100;
+  if (fee < 1) fee = fee.toString().replace("0.", ".");
+  $("#fee-content").html("Please add $" + fee + " to cover processing  associated with my donation.");
   $('#item-fee').attr('checked', false);
   $('#gift-checked').attr('checked', false);
   $("#fee-amount").text("$0");

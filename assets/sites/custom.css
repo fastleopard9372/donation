@@ -217,8 +217,8 @@ a.fee-edit:hover {
   display: flex;
   justify-content: space-between;
   margin: 5px 20px 2px 25px;
-  padding: 1.5rem;
-  border: 1px solid #e0e0e0;
+  padding: 0.5rem;
+  /* border: 1px solid #e0e0e0; */
   border-radius: 8px;
 }
 #fee-content {
