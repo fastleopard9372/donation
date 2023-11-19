@@ -652,6 +652,10 @@ $("#pre-donate").on('click', function() {
   if ($('#item-fee').is(":checked")) {
     fee_checked = 1;
   } else fee_checked = 0;
+  if ($('#gift-checked').is(":checked")) {
+    gift_checked = 1;
+  } else gift_checked = 0;
+
   total_amount = total_amount * 1 + fee * fee_checked;
   if (gift_checked == 1) $(".gift-part").show();
   else $(".gift-part").hide();
