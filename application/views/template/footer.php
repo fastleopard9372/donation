@@ -262,6 +262,7 @@ async
                 <div class="views-field form-text item-title">Donation Amount</div>
                 <div class="views-field form-text item-content" id="amount">$50</div>
               </div>
+
               <div class="form-line">
                 <div class="views-field form-text item-title" style="flex-grow:1;">Cover Fees</div>
                 <!-- <a class="fee-edit">Please add $ to cover processing fees...</a> -->
@@ -278,6 +279,7 @@ async
                 <div class="views-field form-text item-content" id="total-amount">$53.5</div>
                 <input type="hidden" id="amounts" name="amounts" value="53.5" />
               </div>
+              <div class='modal-section-title' style="margin-top:50px;">Pay it forward</div>
               <div class='gift-section'>
                 <input type="checkbox" id="gift-checked"></input>
                 <div class="views-field form-text item-content">
@@ -642,7 +644,9 @@ $("#pre-donate").on('click', function() {
   fee = Math.floor((total_amount * 0.029 + 0.30) * 100 + 0.5) / 100;
   fee1 = fee;
   if (fee < 1) fee = fee.toString().replace("0.", ".");
-  $("#fee-content").html("Please add $" + fee.toFixed(2) + " to cover processing  associated with my donation.");
+  //$("#fee-content").html("Please add $" + fee.toFixed(2) + " to cover processing  associated with my donation.");
+  $("#fee-content").html("Please add $" + fee.toFixed(2) +
+    " to cover the card processing fees associated with my donation.");
   $('#item-fee').attr('checked', true);
   $('#gift-checked').attr('checked', false);
 
