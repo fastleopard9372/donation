@@ -644,7 +644,7 @@ $("#pre-donate").on('click', function() {
   fee1 = fee;
   if (fee < 1) fee = fee.toString().replace("0.", ".");
   //$("#fee-content").html("Please add $" + fee.toFixed(2) + " to cover processing  associated with my donation.");
-  $("#fee-content").html("Please add $" + fee.toFixed(2) +
+  $("#fee-content").html("Please add $" + fee1.toFixed(2).toString().replace("0.", ".") +
     " to cover the card processing fees associated with my donation.");
   $('#item-fee').attr('checked', true);
   $('#gift-checked').attr('checked', false);
@@ -657,6 +657,7 @@ $("#pre-donate").on('click', function() {
   else $(".gift-part").hide();
   $("#fee-amount").text("$" + fee1.toFixed(2));
   $("#kind").val(gift_checked);
+  console.log(total_amount, fee, fee_checked);
   $("#total-amount").text("$" + total_amount.toFixed(2));
   $("#amounts").val(total_amount);
   $("#payBtn").html("Pay $" + total_amount.toFixed(2));
