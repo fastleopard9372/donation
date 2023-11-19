@@ -604,9 +604,13 @@ $("#more-show").on('click', function() {
   else
     $("#more-show-text").addClass('detail-show');
 });
-
+var clicked = false;
 $(".donate_btn").on('click', function() {
-  $("#pre-donate-input").val($(this).attr('amount'));
+  clicked = !clicked;
+  if (clicked)
+    $("#pre-donate-input").val($(this).attr('amount'));
+  else
+    $("#pre-donate-input").val("");
 });
 $("#pre-donate").on('click', function() {
   if ($("#pre-donate-input").val() == 0 || $("#pre-donate-input").val() == "" || $("#pre-donate-input").val() ==
