@@ -279,7 +279,7 @@ async
                 <div class="views-field form-text item-content" id="total-amount">$53.5</div>
                 <input type="hidden" id="amounts" name="amounts" value="53.5" />
               </div>
-              <div class='modal-section-title' style="margin-top:50px;">Pay it forward</div>
+              <div class='modal-section-title' style="margin-top:20px;">Pay it forward</div>
               <div class='gift-section'>
                 <input type="checkbox" id="gift-checked"></input>
                 <div class="views-field form-text item-content">
@@ -317,41 +317,40 @@ async
               <div class='modal-section-title'>Personal Information</div>
               <div id="paymentResponse"></div>
               <div class="form-line">
-                <!-- <div class="views-field form-text">First Name</div> -->
+                <div class="views-field form-text">First Name</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="text" id="first_name" name="first_name" placeholder="First Name"
-                    class="form-text form-input" required="" />
-                </div>
-              </div>
-              <div class="form-line">
-                <!-- <div class="views-field form-text">Last Name</div> -->
-                <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="text" name="last_name" id="last_name" placeholder="Last Name"
-                    class="form-text form-input" required="" />
-                </div>
-              </div>
-              <div class="form-line">
-                <!-- <div class="views-field form-text">Email</div> -->
-                <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="email" name="email" id="email" placeholder="Email" class="form-text form-input"
+                  <input type="text" id="first_name" name="first_name" placeholder="" class="form-text form-input"
                     required="" />
+                </div>
+              </div>
+              <div class="form-line">
+                <div class="views-field form-text">Last Name</div>
+                <div class="form-item my-text form-type-textfield form-item-search-block-form">
+                  <input type="text" name="last_name" id="last_name" placeholder="" class="form-text form-input"
+                    required="" />
+                </div>
+              </div>
+              <div class="form-line">
+                <div class="views-field form-text">Email</div>
+                <div class="form-item my-text form-type-textfield form-item-search-block-form">
+                  <input type="email" name="email" id="email" placeholder="" class="form-text form-input" required="" />
                 </div>
               </div>
               <!-- TODO: section3 -->
 
               <div class='modal-section-title' style="margin-top:10px;">Billing Information</div>
               <div class="form-line">
-                <!-- <div class="views-field form-text">Address</div> -->
+                <div class="views-field form-text">Address</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="text" name="address" id="address" placeholder="Address" class="form-text form-input"
+                  <input type="text" name="address" id="address" placeholder="" class="form-text form-input"
                     required="" />
                 </div>
               </div>
               <div class="form-line">
-                <!-- <div class="views-field form-text">Address Line2</div> -->
+                <div class="views-field form-text">Address Line2</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="text" name="address_line2" id="address_line2" placeholder="Address Line2"
-                    class="form-text form-input" required="" />
+                  <input type="text" name="address_line2" id="address_line2" placeholder="" class="form-text form-input"
+                    required="" />
                 </div>
               </div>
               <div class="form-line">
@@ -363,24 +362,24 @@ async
               </div>
               <div class="form-colum">
                 <div class="form-line">
-                  <!-- <div class="views-field form-text">State</div> -->
+                  <div class="views-field form-text">State</div>
                   <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                    <input type="text" name="state" id="state" placeholder="State" class="form-text form-input"
+                    <input type="text" name="state" id="state" placeholder="" class="form-text form-input"
                       required="" />
                   </div>
                 </div>
                 <div class="form-line">
-                  <!-- <div class="views-field form-text">Postal Code</div> -->
+                  <div class="views-field form-text">Postal Code</div>
                   <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                    <input type="text" name="postal_code" id="postal_code" placeholder="Postal Code"
-                      class="form-text form-input" required="" />
+                    <input type="text" name="postal_code" id="postal_code" placeholder="" class="form-text form-input"
+                      required="" />
                   </div>
                 </div>
               </div>
               <div class="form-line">
-                <!-- <div class="views-field form-text">Country</div> -->
+                <div class="views-field form-text">Country</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="text" name="country" id="country" placeholder="Country" class="form-text form-input"
+                  <input type="text" name="country" id="country" placeholder="" class="form-text form-input"
                     required="" />
                 </div>
               </div>
