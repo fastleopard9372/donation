@@ -8,7 +8,6 @@ class Products extends CI_Controller
   {
     parent::__construct();
 
-    $this->load->library('form_validation');
     // Load Stripe library
     $this->load->library('stripe_lib');
 
@@ -122,7 +121,7 @@ class Products extends CI_Controller
             $this->email->set_mailtype('html');
             if ($payment_status == 'succeeded') {
               if ($kind == 0) {
-                $this->email->from($server_email, $server_email);
+                $this->email->from($server_email, 'Booktopia');
                 $this->email->to($email);
                 $this->email->subject('Thank you for your generous donation to Booktopia!');
                 $htmlContent = '<div><br><h3>Dear ' . $name . '.</h3><br><br>We are so grateful for your donation to Booktopia.';
@@ -132,7 +131,7 @@ class Products extends CI_Controller
                 $htmlContent .= '<br><br><div>Your friends at Booktopia!</div>';
                 $this->email->message($htmlContent);
               } else {
-                $this->email->from($server_email, $server_email);
+                $this->email->from($server_email, 'Booktopia');
                 $this->email->to($email);
                 $this->email->subject('A generous donation was just made to Booktopia in ' . $gift_email);
                 $htmlContent = '<div><br><h3>Dear ' . $name . '.</h3><br><br>We are so grateful for your donation to Booktopia.';
@@ -142,7 +141,7 @@ class Products extends CI_Controller
                 $htmlContent .= '<br><br><div>Your friends at Booktopia!</div>';
                 $this->email->message($htmlContent);
                 if ($this->email->send()) {
-                  $this->email->from($server_email, $server_email);
+                  $this->email->from($server_email, 'Booktopia');
                   $this->email->to($gift_email);
                   $this->email->subject('A generous donation was just made to Booktopia in your name!');
                   $htmlContent = '<h1>Boooktopia Bookgroup</h1>';
