@@ -551,16 +551,7 @@ async
 var modal = document.getElementById("myDonationModal");
 var modal_message = document.getElementById("myMessage");
 </script>
-<?php
-if (isset($msg)) {
-  if ($msg == 'Donation is finished successfully')
-    $msg = 'Your donation was successfully processed.';
-?>
-<script>
-$("#myMessage .message-content").text("<?= $msg ?>");
-modal_message.style.display = "block";
-</script>
-<?php } ?>
+
 
 <!-- The Modal -->
 <script>
@@ -707,6 +698,16 @@ $("#DonationClose").on('click', function(e) {
   // $("#myDonationModal").hide();
   modal.style.display = "none";
 })
+
+<?php
+
+if (isset($msg)) {
+  if ($msg == 'Donation is finished successfully')
+    $msg = 'Your donation was successfully processed.';
+?>
+modal_message.style.display = "block";
+$("#myMessage .message-content").text("<?= $msg ?>");
+<?php } ?>
 
 $("#more-show").on('click', function() {
   if ($("#more-show-text").hasClass('detail-show'))
