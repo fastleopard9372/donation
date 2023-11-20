@@ -347,25 +347,88 @@ async
                 </div>
               </div>
               <div class="form-line">
-                <div class="views-field form-text">Address Line2</div>
+                <div class="views-field form-text">Address Line 2</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="text" name="address_line2" id="address_line2" placeholder="" class="form-text form-input"
-                    required="" />
+                  <input type="text" name="address_line2" id="address_line2" placeholder=""
+                    class="form-text form-input" />
                 </div>
               </div>
               <div class="form-line">
-                <!-- <div class="views-field form-text">City</div> -->
+                <div class="views-field form-text">City</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="text" name="city" id="city" placeholder="City" class="form-text form-input"
-                    required="" />
+                  <input type="text" name="city" id="city" placeholder="" class="form-text form-input" required="" />
                 </div>
               </div>
               <div class="form-colum">
                 <div class="form-line">
                   <div class="views-field form-text">State</div>
                   <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                    <input type="text" name="state" id="state" placeholder="" class="form-text form-input"
-                      required="" />
+
+                    <?php
+                      $stateAbbreviations = array(
+                        'Alabama',
+                        'Alaska',
+                        'Arizona',
+                        'Arkansas',
+                        'California',
+                        'Colorado',
+                        'Connecticut',
+                        'Delaware',
+                        'Florida',
+                        'Georgia',
+                        'Hawaii',
+                        'Idaho',
+                        'Illinois',
+                        'Indiana',
+                        'Iowa',
+                        'Kansas',
+                        'Kentucky',
+                        'Louisiana',
+                        'Maine',
+                        'Maryland',
+                        'Massachusetts',
+                        'Michigan',
+                        'Minnesota',
+                        'Mississippi',
+                        'Missouri',
+                        'Montana',
+                        'Nebraska',
+                        'Nevada',
+                        'New Hampshire',
+                        'New Jersey',
+                        'New Mexico',
+                        'New York',
+                        'North Carolina',
+                        'North Dakota',
+                        'Ohio',
+                        'Oklahoma',
+                        'Oregon',
+                        'Pennsylvania',
+                        'Rhode Island',
+                        'South Carolina',
+                        'South Dakota',
+                        'Tennessee',
+                        'Texas',
+                        'Utah',
+                        'Vermont',
+                        'Virginia',
+                        'Washington',
+                        'West Virginia',
+                        'Wisconsin',
+                        'Wyoming'
+                      );
+                    ?>
+                    <select name="state" id="state" class="form-text form-input" style="border-radius: 0px;
+    padding: 4px;">
+                      <?php
+                        foreach ($stateAbbreviations as $stateName) {
+                      ?>
+                      <option value="<?= $stateName ?>"><?= $stateName ?></option>
+
+                      <?php
+                        }
+                                              ?>
+                    </select>
                   </div>
                 </div>
                 <div class="form-line">
@@ -376,13 +439,15 @@ async
                   </div>
                 </div>
               </div>
-              <div class="form-line">
+              <input type="hidden" name="country" id="country" placeholder="" class="form-text form-input"
+                value="Unite State" />
+              <!-- <div class="form-line">
                 <div class="views-field form-text">Country</div>
                 <div class="form-item my-text form-type-textfield form-item-search-block-form">
-                  <input type="text" name="country" id="country" placeholder="" class="form-text form-input"
-                    required="" />
+                  <input type="hidden" name="country" id="country" placeholder="" class="form-text form-input"
+                    value="Unite State" />
                 </div>
-              </div>
+              </div> -->
               <div class='modal-section-title' style="margin-top:10px;">Card Information</div>
               <div class="form-group">
                 <div class="views-field form-text" style="font-size:15px;">Card Number</div>
@@ -682,8 +747,9 @@ $("#item-fee").on('click', function() {
   fee_checked = 1 - fee_checked;
   $("#fee-amount").text("$" + (fee * fee_checked).toFixed(2));
   $("#total-amount").text("$" + ($("#pre-donate-input").val().replace("$", "") * 1 + fee * fee_checked).toFixed(2));
-  $("#amounts").val((total_amount * 1 + fee * fee_checked).toFixed(2));
-  $("#payBtn").html("Pay $" + $("#amounts").val().toFixed(2));
+  $("#amounts").val($("#total-amount").text().replace("$", ""));
+  $("#payBtn").html("Pay " + $("#total-amount").text());
+  console.log($("#amounts").val())
 });
 $("#gift-checked").on('click', function() {
   gift_checked = 1 - gift_checked;
