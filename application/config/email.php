@@ -1,6 +1,6 @@
 <?php
 $config['email_config'] = Array(
-  'smtp_timeout' => '5',
+  'smtp_timeout' => '8',
   'protocol' => 'smtp',
   'smtp_host' => 'mail.booktopiabookclub.org',
   'smtp_port' => 587,

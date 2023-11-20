@@ -235,7 +235,8 @@ async
   </div>
 </div>
 
-<div id="myModal" class="modal donation-modal">
+
+<div id="myDonationModal" class="modal donation-modal">
   <!-- Modal content -->
   <div class="modal-content">
     <!-- border:#437ed6 solid 3px; -->
@@ -244,10 +245,10 @@ async
         <img src="<?= ASSETS_URL ?>sites/default/files/logo_tr1.png" alt="logo" />
       </div>
       <div class="" style="position: absolute;width: 35px;left: 7px;top: 12px;">
-        <img id="donate_prev" src="<?= ASSETS_URL ?>images/prev.png" />
+        <img id="donate_prev" src="<?= ASSETS_URL ?>images/prev.png" style="cursor:pointer;" />
       </div>
       <div class="btn-close close">
-        <img src="<?= ASSETS_URL ?>images/close.svg" />
+        <img src="<?= ASSETS_URL ?>images/close.svg" id="DonationClose" />
       </div>
     </div>
     <div class="modal-body">
@@ -472,7 +473,7 @@ async
             <div class="form-actions my-text form-wrapper" id="edit-actions">
               <button type="button" id="donate_next">Next</button>
               <!-- <button type="button" id="donate_prev">prev</button> -->
-              <button type="submit" id="payBtn">Donate</button>
+              <button type="submit" id="payBtn">Complete Donation</button>
             </div>
           </div>
         </form>
@@ -480,37 +481,30 @@ async
     </div>
   </div>
 </div>
+
 </div>
-
-<?php
-if (isset($msg)) {
-  echo '<script>alert("' . $msg . '")</script>';
-}
-?>
-<!-- The Modal -->
-<script>
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-function showModal() {
-  modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-};
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
-</script>
+<div id="myMessage" class="modal donation-modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <!-- border:#437ed6 solid 3px; -->
+    <div class="modal-header" style="justify-content: flex-start;">
+      <div class="form-line modal-img" style="margin-top: 0px; width: 65px;">
+        <img src="<?= ASSETS_URL ?>sites/default/files/logo_tr1.png" alt="logo" style="width:57px;" />
+      </div>
+      <div class="btn-close close">
+        <img src="<?= ASSETS_URL ?>images/close.svg" class="BtnOk" />
+      </div>
+    </div>
+    <div class="modal-body">
+      <p class="message-title" style="font-size:30px; font-weight:700;text-align:center;margin: 20px;">Thank you!</p>
+      <p class="message-content" style="margin-top:20px;text-align:center;"></p>
+      <div class="form-actions my-text form-wrapper" id="edit-actions" style="justify-content: center !important;">
+        <button type="button" id="BtnOk" class="close BtnOk" style="font-size:13px;width:auto;">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 <script defer="defer" src="<?= ASSETS_URL ?>sites/default/files/google_tag/google_tag.script.js">
 </script>
 <script src="<?= ASSETS_URL ?>sites/all/modules/contrib/google_cse/google_cse.js"></script>
@@ -552,6 +546,44 @@ window.onclick = function(event) {
   defer></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet" />
+<script>
+// Get the modal
+var modal = document.getElementById("myDonationModal");
+var modal_message = document.getElementById("myMessage");
+</script>
+<?php
+if (isset($msg)) {
+  if ($msg == 'Donation is finished successfully')
+    $msg = 'Your donation was successfully processed.';
+?>
+<script>
+$("#myMessage .message-content").text("<?= $msg ?>");
+modal_message.style.display = "block";
+</script>
+<?php } ?>
+
+<!-- The Modal -->
+<script>
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close");
+
+function showModal() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+// window.onclick = function(event) {
+//   if (event.target == modal) {
+//     modal.style.display = "none";
+//   }
+// };
+</script>
+
 <script type="text/javascript">
 var $ = jQuery.noConflict();
 var site_url = '<?= SITE_URL ?>';
@@ -667,6 +699,15 @@ function isValidEmail(email) {
   return emailRegex.test(email);
 }
 
+$("#BtnOk").on('click', function() {
+  modal_message.style.display = "none";
+})
+$("#DonationClose").on('click', function(e) {
+  // e.preventEvent();
+  // $("#myDonationModal").hide();
+  modal.style.display = "none";
+})
+
 $("#more-show").on('click', function() {
   if ($("#more-show-text").hasClass('detail-show'))
     $("#more-show-text").removeClass('detail-show');
@@ -729,7 +770,7 @@ $("#pre-donate").on('click', function() {
   console.log(total_amount, fee, fee_checked);
   $("#total-amount").text("$" + total_amount.toFixed(2));
   $("#amounts").val(total_amount);
-  $("#payBtn").html("Pay $" + total_amount.toFixed(2));
+  // $("#payBtn").html("Pay $" + total_amount.toFixed(2));
 });
 //$(".form-line-inner").hide();
 var fee_show = false;
@@ -748,8 +789,8 @@ $("#item-fee").on('click', function() {
   $("#fee-amount").text("$" + (fee * fee_checked).toFixed(2));
   $("#total-amount").text("$" + ($("#pre-donate-input").val().replace("$", "") * 1 + fee * fee_checked).toFixed(2));
   $("#amounts").val($("#total-amount").text().replace("$", ""));
-  $("#payBtn").html("Pay " + $("#total-amount").text());
-  console.log($("#amounts").val())
+  // $("#payBtn").html("Pay " + $("#total-amount").text());
+
 });
 $("#gift-checked").on('click', function() {
   gift_checked = 1 - gift_checked;
@@ -916,7 +957,9 @@ function createToken() {
 
 // Callback to handle the response from stripe
 function stripeTokenHandler(token) {
+
   // Insert the token ID into the form so it gets submitted to the server
+  $("#amount").val($("#amounts").val());
   if ($('#first_name').val() === "") {
     alert("Input First name!");
     $('#first_name').focus();
@@ -958,12 +1001,13 @@ function stripeTokenHandler(token) {
     $('#country').focus();
     return;
   }
+
   // if ($('#card_number').val() === "") {
   //   alert("Input Card Number!");
   //   $('#card_number').focus();
   //   return;
   // }
-  $("#amounts").val(total_amount);
+
   $("#kind").val(gift_checked);
   var hiddenInput = document.createElement('input');
   hiddenInput.setAttribute('type', 'hidden');
