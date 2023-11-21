@@ -116,33 +116,40 @@ class Products extends CI_Controller
             $this->load->config('email');
             $config = $this->config->item('email_config');
             $server_email = $this->config->item('server_email');
-            $server_name = 'Booktopia';
             $this->load->library('email', $config);
             $this->email->set_newline("\r\n");
             $this->email->set_mailtype('html');
             if ($payment_status == 'succeeded') {
               if ($kind == 0) {
-                $this->email->from($server_email, $server_name);
+                $this->email->from($server_email, 'Booktopia');
                 $this->email->to($email);
                 $this->email->subject('Thank you for your generous donation to Booktopia!');
-                $htmlContent = '<div><br><h3>Hi ' . $name . '.</h3><br><br>We are so grateful for your donation to Booktopia.';
+                $htmlContent = '<div style="width:100% !important;text-align: center;"><img  alt="Booktopia"
+                            style="width:150px;  margin:auto;" src="' . ASSETS_URL . 'sites/default/files/logo_tr1.png" /></div>';
+                $htmlContent .= '<div style="width:100% !important;"><img width="100%" alt="Booktopia"
+                            style="width:100%; max-width:100%; margin:auto; object-fit:cover;" src="' . ASSETS_URL . 'sites/default/files/book.jpg" /></div>';
+                $htmlContent .= '<div><br><h3>Hi ' . $postData['first_name'] . '.</h3><br>We are so grateful for your donation to Booktopia.';
                 $htmlContent .= ' Your generosity will help us to fulfill our mission of promoting literacy and education by providing books to elementary school&nbsp;children.';
                 $htmlContent .= '<br><br>With your donation we will be able to purchase and distribute more books, as well as organize reading programs and provide reading rewards that motivate students to read. You are helping make a difference in the lives of children by giving them the gift of reading.';
                 $htmlContent .= '<br><br>Thank you again for your kindness and generosity.&nbsp;</div>';
                 $htmlContent .= '<br><br><div>Your friends at Booktopia!</div>';
                 $this->email->message($htmlContent);
               } else {
-                $this->email->from($server_email, $server_name);
+                $this->email->from($server_email, 'Booktopia');
                 $this->email->to($email);
                 $this->email->subject('A generous donation was just made to Booktopia in ' . $gift_email);
-                $htmlContent = '<div><br><h3>Hi ' . $name . '.</h3><br><br>We are so grateful for your donation to Booktopia.';
+                $htmlContent = '<div style="width:100% !important;text-align: center;"><img  alt="Booktopia"
+                            style="width:150px;  margin:auto;" src="' . ASSETS_URL . 'sites/default/files/logo_tr1.png" /></div>';
+                $htmlContent .= '<div style="width:100% !important;"><img width="100%" alt="Booktopia"
+                            style="width:100%; max-width:100%; margin:auto; object-fit:cover;" src="' . ASSETS_URL . 'sites/default/files/book.jpg" /></div>';
+                $htmlContent .= '<div><br><h3>Hi ' . $postData['first_name'] . '.</h3><br>We are so grateful for your donation to Booktopia.';
                 $htmlContent .= ' Your generosity will help us to fulfill our mission of promoting literacy and education by providing books to elementary school&nbsp;children.';
                 $htmlContent .= '<br><br>With your donation we will be able to purchase and distribute more books, as well as organize reading programs and provide reading rewards that motivate students to read. You are helping make a difference in the lives of children by giving them the gift of reading.';
                 $htmlContent .= '<br><br>Thank you again for your kindness and generosity.&nbsp;</div>';
                 $htmlContent .= '<br><br><div>Your friends at Booktopia!</div>';
                 $this->email->message($htmlContent);
                 if ($this->email->send()) {
-                  $this->email->from($server_email, $server_name);
+                  $this->email->from($server_email, 'Booktopia');
                   $this->email->to($gift_email);
                   $this->email->subject('A generous donation was just made to Booktopia in your name!');
                   $htmlContent = '<h1>Boooktopia Bookgroup</h1>';
@@ -154,7 +161,7 @@ class Products extends CI_Controller
                   $htmlContent .= '<br><br><div>1)Visit <a href="http://booktopiabookclub.org" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://booktopiabookclub.org&amp;source=gmail&amp;ust=1700280176593000&amp;usg=AOvVaw0OpD2u-WPe7cMc1G48MJ9a">booktopiabookclub.org</a></div>';
                   $htmlContent .= '<div>2)Click donate and select the amount you would like to donate (as little as $5 will provide a book for a child)</div>';
                   $htmlContent .= "<div>3)Select donate as a gift and follow the instructions to complete your donation - That's all!&nbsp;<br><br>Thank you for being a part of Booktopia&nbsp;</div>";
-                  $htmlContent .= '<div><br><br><h3>' . $name . "'s Message</h3></div><br><br>";
+                  $htmlContent .= '<div><br><h3>' . $postData['first_name'] . "'s Message</h3></div><br>";
                   $htmlContent .= '<div>' . $gift_message . '</div>';
                   $this->email->message($htmlContent);
                 }
