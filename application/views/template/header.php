@@ -41,7 +41,7 @@
   <link rel="apple-touch-icon" href="<?= ASSETS_URL ?>sites/default/files/favicon.png" />
 
   <style>
-  var assets_url=<?= ASSETS_URL ?>;
+  var assets_url=<?=ASSETS_URL ?>;
   @import url("<?= ASSETS_URL ?>sites/all/modules/contrib/jquery_update/replace/ui/themes/base/minified/jquery.ui.core.min.css");
   @import url("<?= ASSETS_URL ?>sites/all/modules/contrib/jquery_update/replace/ui/themes/base/minified/jquery.ui.theme.min.css");
   @import url("<?= ASSETS_URL ?>sites/all/modules/contrib/jquery_update/replace/ui/themes/base/minified/jquery.ui.tabs.min.css");
