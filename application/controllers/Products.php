@@ -237,7 +237,6 @@ class Products extends CI_Controller
 
     // Pass products data to the view
     $data['statue'] = 'home';
-
     // $data['donate'] =  $this->product->getDonate();
     // $data['count'] =  $this->product->getCount();
     // $data['total'] = $this->product->getTotal();
