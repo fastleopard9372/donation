@@ -132,7 +132,7 @@ class Products extends CI_Controller
                 $htmlContent .= ' Your generosity will help us to fulfill our mission of promoting literacy and education by providing books to elementary school&nbsp;children.';
                 $htmlContent .= '<br><br>With your donation we will be able to purchase and distribute more books, as well as organize reading programs and provide reading rewards that motivate students to read. You are helping make a difference in the lives of children by giving them the gift of reading.';
                 $htmlContent .= '<br><br>Thank you again for your kindness and generosity.&nbsp;</div>';
-                $htmlContent .= '<br><br><div>Your friends at Booktopia!</div>';
+                $htmlContent .= '<br><div>Your friends at Booktopia!</div>';
                 $this->email->message($htmlContent);
               } else {
                 $this->email->from($server_email, 'Booktopia');
@@ -146,7 +146,7 @@ class Products extends CI_Controller
                 $htmlContent .= ' Your generosity will help us to fulfill our mission of promoting literacy and education by providing books to elementary school&nbsp;children.';
                 $htmlContent .= '<br><br>With your donation we will be able to purchase and distribute more books, as well as organize reading programs and provide reading rewards that motivate students to read. You are helping make a difference in the lives of children by giving them the gift of reading.';
                 $htmlContent .= '<br><br>Thank you again for your kindness and generosity.&nbsp;</div>';
-                $htmlContent .= '<br><br><div>Your friends at Booktopia!</div>';
+                $htmlContent .= '<br><div>Your friends at Booktopia!</div>';
                 $this->email->message($htmlContent);
                 if ($this->email->send()) {
                   $this->email->from($server_email, 'Booktopia');
@@ -156,13 +156,13 @@ class Products extends CI_Controller
                             style="width:100px;  margin:auto;" src="' . ASSETS_URL . 'sites/default/files/logo_tr1.png" /></div>';
                   $htmlContent .= '<div style="width:100% !important;"><img width="100%" alt="Booktopia"
                             style="width:100%; max-width:100%; margin:auto; object-fit:cover;" src="' . ASSETS_URL . 'sites/default/files/book.jpg" /></div>';
-                  $htmlContent .= '<div><br><h3>Hi ' . $gift_name . '</h3><br><br>';
+                  $htmlContent .= '<div><br><h3>Hi ' . $gift_name . '</h3><br>';
                   $htmlContent .= 'We are so grateful to have received a donation to Booktopia in your name by ' . $name . '.';
                   $htmlContent .= 'This gift will help us to fulfill our mission of promoting literacy and education by providing books to elementary school&nbsp;children.';
                   $htmlContent .= '<br><br>With this donation we will be able to purchase and distribute more books, as well as organize reading programs and provide reading rewards that motivate students to read.';
                   $htmlContent .= "<br><br>If you would like to continue helping make a difference in the lives of children please consider making a donation in someone else's name as part of our pay it forward program.</div>";
-                  $htmlContent .= 'Please visit <a href="http://booktopiabookclub.org" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://booktopiabookclub.org&amp;source=gmail&amp;ust=1700280176593000&amp;usg=AOvVaw0OpD2u-WPe7cMc1G48MJ9a">booktopiabookclub.org</a> to donate. As little as $5 will provide a book for a child, and as always 100% of your donation is used to purchase books for children.';
-                  $htmlContent .= '<br><div>Thank you for being a part of Booktopia</div>';
+                  $htmlContent .= '<br>Please visit <a href="http://booktopiabookclub.org" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://booktopiabookclub.org&amp;source=gmail&amp;ust=1700280176593000&amp;usg=AOvVaw0OpD2u-WPe7cMc1G48MJ9a">booktopiabookclub.org</a> to donate. As little as $5 will provide a book for a child, and as always 100% of your donation is used to purchase books for children.';
+                  $htmlContent .= '<br><br><div>Thank you for being a part of Booktopia</div>';
                   if ($gift_message != '') {
                     $htmlContent .= '<br><h3>' . $postData['first_name'] . "'s Message</h3></div><br>";
                     $htmlContent .= '<div>' . $gift_message . '</div>';
